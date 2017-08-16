@@ -1,8 +1,7 @@
-/*!
- * Start Bootstrap - Heroic Features (http://startbootstrap.com/template-overviews/heroic-features)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
- */
+html {
+    position: relative;
+    min-height: 100%;
+}
 
 body {
     padding-top: 54px;
@@ -16,6 +15,10 @@ body {
 
 .card {
     height: 100%;
+}
+
+body > .container {
+    padding: 30px 0px 0;
 }
 
 .container .text-muted {
