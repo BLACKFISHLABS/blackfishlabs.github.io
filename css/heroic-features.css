@@ -4,25 +4,9 @@ html {
 }
 
 body {
-    padding-top: 54px;
-}
-
-@media (min-width: 992px) {
-    body {
-        padding-top: 56px;
-    }
-}
-
-.card {
-    height: 100%;
-}
-
-body > .container {
-    padding: 50px 0px 0;
-}
-
-.container .text-muted {
-    margin: 20px 0;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: Varela Round, Verdana, Geneva, sans-serif;
 }
 
 .footer {
@@ -32,4 +16,34 @@ body > .container {
     /* Set the fixed height of the footer here */
     height: 60px;
     background-color: #f5f5f5;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+    padding: 80px 5px 0;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+.huge {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: bold;
 }
