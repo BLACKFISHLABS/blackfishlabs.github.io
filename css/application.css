@@ -2,7 +2,7 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
-  font-family: 'Nunito', sans-serif;
+  font-family: Varela Round, Verdana, Geneva, sans-serif;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -35,7 +35,7 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 1200px;
+    max-width: 1280px;
   }
 }
 .container-narrow > hr {
