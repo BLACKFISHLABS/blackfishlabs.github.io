@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-clear
+clear;
 echo "Type your commit: "
 read msg;
 git add .

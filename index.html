@@ -24,7 +24,7 @@
         crossorigin="anonymous"></script>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round|Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
 
@@ -52,55 +52,97 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">BLACKFISH LABS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/BLACKFISHLABS" target="_blank">
+                        GitHub
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.instagram.com/blackfishlabs/" target="_blank">
+                        Instagram
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.facebook.com/blackfishlabs/" target="_blank">
+                        Facebook
+                    </a>
+                </li>
+                <!--
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Dropdown link
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    -->
+            </ul>
+        </div>
+    </nav>
+
     <!-- Begin page content -->
-    <main role="main" class="container">
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills float-right"></ul>
-            </nav>
-            <h3 class="text-muted">BLACKFISH LABS</h3>
-        </div>
+    <main role="main">
+
         <div class="jumbotron">
-            <div style="text-align:center">
-                <img src="img/profile.png" class="img-fluid" alt="" width="512" height="auto">
+            <div class="container">
+                <div style="text-align:center">
+                    <img src="img/profile.png" class="img-fluid" alt="" width="256" height="auto">
+                    <hr>
+
+                    <p>APLICATIVOS E SOFTWARE <b>SOB MEDIDA</b> PARA NEG&#xD3;CIOS DIGITAIS</p>
+                    <a class="btn btn-lg btn-secondary" href="mailto:dev.blackfishlabs@gmail.com">
+                        <i class="fas fa-envelope"></i> Contrate-me</a>
+                </div>
             </div>
+        </div>
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="pb-2 mb-2 border-bottom">Precifica App</h4>
+                    <p>Aplicativo para calcular o custo aproximado da construção de um <b>aplicativo mobile</b></p>
+                    <p><a href="http://bit.ly/2A1EO5M" target="_blank">Google Play</a> </p>
+
+                    <h4 class="pb-2 mb-2 border-bottom">Quem Contrato</h4>
+                    <p>Aplicativo que aproxima o <b>Profissional da &#xC1;rea da Constru&#xE7;&#xE3;o, Reforma,
+                            Manuten&#xE7;&#xE3;o e Limpeza</b> ao consumidor</p>
+                    <p><a href="http://bit.ly/2TbbDVQ" target="_blank">Google Play</a> </p>
+                </div>
+
+                <div class="col-md-6">
+                    <h4 class="pb-2 mb-2 border-bottom">Forza</h4>
+                    <p>Aplicativo completo para <b>Automa&#xE7;&#xE3;o de For&#xE7;a de Vendas</b></p>
+
+                    <h4 class="pb-2 mb-2 border-bottom">Factura</h4>
+                    <p>API Emissora de <b>NFe/NFCe/MDFe e CTe</b></p>
+
+                    <h4 class="pb-2 mb-2 border-bottom">Bazaar</h4>
+                    <p><b>Backoffice Online</b> de gestão para a micro e pequena empresa</p>
+                </div>
+            </div>
+
             <hr>
-            <h4>APLICATIVOS E SOFTWARE <b>SOB MEDIDA</b> PARA NEG&#xD3;CIOS DIGITAIS</h4>
-            <p class="mt-4">
-                <a class="btn btn-lg btn-secondary" href="https://github.com/BLACKFISHLABS" target="_blank">
-                    <i class="fab fa-github"></i> GitHub</a>
-                <a class="btn btn-lg btn-secondary" href="mailto:dev.blackfishlabs@gmail.com">
-                    <i class="fas fa-envelope"></i> Contrate-me</a>
-            </p>
-        </div>
-        <div class="row marketing">
-            <div class="col-xl-6">
-                <h5 class="pb-2 mb-2 border-bottom">Precifica App</h5>
-                <p>Aplicativo para calcular o custo aproximado da construção de um <b>aplicativo mobile</b></p>
-                <p><a href="http://bit.ly/2A1EO5M" target="_blank">Baixe o Aplicativo</a> </p>
 
-                <h5 class="pb-2 mb-2 border-bottom">Quem Contrato</h5>
-                <p>Aplicativo que aproxima o <b>Profissional da &#xC1;rea da Constru&#xE7;&#xE3;o, Reforma,
-                        Manuten&#xE7;&#xE3;o e Limpeza</b> ao consumidor</p>
-                <p><a href="http://bit.ly/2TbbDVQ" target="_blank">Baixe o Aplicativo</a> </p>
-
-                <h5 class="pb-2 mb-2 border-bottom">Forza</h5>
-                <p>Aplicativo completo para <b>Automa&#xE7;&#xE3;o de For&#xE7;a de Vendas</b></p>
-            </div>
-            <div class="col-xl-6">
-                <h5 class="pb-2 mb-2 border-bottom">Bazaar</h5>
-                <p><b>Backoffice Online</b> de gestão para a micro e pequena empresa</p>
-
-                <h5 class="pb-2 mb-2 border-bottom">Factura</h5>
-                <p>API Emissora de <b>NFe/NFCe/MDFe e CTe</b></p>
-            </div>
-        </div>
+        </div> <!-- /container -->
     </main>
 
-    <footer class="footer">
-        <div class="container"> <span class="text-muted">&#xA9; 2015 ~ 2019 - BLACKFISH LABS</span>
-        </div>
+    <footer class="container">
+        <span class="text-muted">&#xA9; 2015/2019 - Desenvolvido por Jeferson Cruz</span>
     </footer>
+
 </body>
 
 </html>
