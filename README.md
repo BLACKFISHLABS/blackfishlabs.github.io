@@ -30,5 +30,4 @@
 - Code Climate
 
 ### Monitoramento de Ambiente
-- Spring Admin
 - New Relic RPM
