@@ -241,7 +241,7 @@ http://168.205.87.198:8555/live/1221/123456/104.ts?checkedby:iptvcat.com
 http://168.205.87.198:8555/live/michele/123456/104.ts?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="http://static.esrv.cc/logos/canais/sbt.png" group-title="TV ABERTA",SBT Alterosa MG HD
 http://esrv.cc:80/eduardo002/72836392/13904.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/IkZfa4j.png" group-title="General",SBT Interior (720p)
+#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/IkZfa4j.png" group-title="TV ABERTA",SBT Interior (720p)
 https://cdn.jmvstream.com/w/LVW-10801/LVW10801_Xvg4R0u57n/playlist.m3u8?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/5b150e7c5ac7f0a540f616bca95ec36f.png" group-title="TV ABERTA",SBT RJ FHD
 http://esrv.cc:80/eduardo002/72836392/39906.ts?checkedby:iptvcat.com
@@ -255,7 +255,7 @@ http://esrv.cc:80/eduardo002/72836392/383.ts?checkedby:iptvcat.com
 http://esrv.cc:80/eduardo002/72836392/384.ts?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/5b150e7c5ac7f0a540f616bca95ec36f.png" group-title="TV ABERTA",SBT Serra Dourada FHD (H265)
 http://esrv.cc:80/eduardo002/72836392/382.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/IUDRW8l.png" group-title="General",SBT TV Jornal Recife (720p) [Not 24/7]
+#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/IUDRW8l.png" group-title="TV ABERTA",SBT TV Jornal Recife (720p) [Not 24/7]
 https://evpp.mm.uol.com.br/ne10/ne10.smil/playlist.m3u8?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="http://iv.pe/TxS" group-title="TV ABERTA",TV Aratu SBT Bahia HD
 http://esrv.cc:80/eduardo002/72836392/31641.ts?checkedby:iptvcat.com
@@ -279,7 +279,7 @@ http://esrv.cc:80/eduardo002/72836392/32017.ts?checkedby:iptvcat.com
 http://esrv.cc:80/eduardo002/72836392/32019.ts?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="" group-title="TV ABERTA",TV Aparecida SD
 http://esrv.cc:80/eduardo002/72836392/14065.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/XN6jjMR.png" group-title="General",ConecTV Brasil (720p)
+#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/XN6jjMR.png" group-title="TV ABERTA",ConecTV Brasil (720p)
 https://stream01.msolutionbrasil.com.br/hls/conectv/live.m3u8?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="" group-title="TV ABERTA",TV BRASIL
 http://168.205.87.198:8555/live/michele/123456/134.ts?checkedby:iptvcat.com
@@ -301,7 +301,7 @@ http://esrv.cc:80/eduardo002/72836392/31512.ts?checkedby:iptvcat.com
 http://esrv.cc:80/eduardo002/72836392/31933.ts?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="http://a5.vc/iGX" group-title="TV ABERTA",TV Brasil HD
 http://esrv.cc:80/eduardo002/72836392/31932.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/noqGfuy.png" group-title="General",TV Brasil Oeste (720p)
+#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/noqGfuy.png" group-title="TV ABERTA",TV Brasil Oeste (720p)
 https://5ad482a77183d.streamlock.net/operacaotbomt.com/operacaotbomt.com/playlist.m3u8?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="http://a5.vc/8XD" group-title="TV ABERTA",Cultura 4K
 http://esrv.cc:80/eduardo002/72836392/41518.ts?checkedby:iptvcat.com
@@ -475,9 +475,9 @@ http://168.205.87.198:8555/live/1431/123456/136.ts?checkedby:iptvcat.com
 http://168.205.87.198:8555/live/1221/123456/136.ts?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="" group-title="VARIEDADES",TV CÂMARA
 http://168.205.87.198:8555/live/michele/123456/136.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/UpV2PRk.png" group-title="Legislative",TV Câmara
+#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/UpV2PRk.png" group-title="VARIEDADES",TV Câmara
 https://stream3.camara.gov.br/tv1/manifest.m3u8?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/UpV2PRk.png" group-title="Legislative",TV Câmara 2
+#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/UpV2PRk.png" group-title="VARIEDADES",TV Câmara 2
 https://stream3.camara.gov.br/tv2/manifest.m3u8?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="" group-title="VARIEDADES",TV ESCOLA
 http://168.205.87.198:8555/live/1431/123456/137.ts?checkedby:iptvcat.com
@@ -501,7 +501,7 @@ http://168.205.87.198:8555/live/1431/123456/139.ts?checkedby:iptvcat.com
 http://168.205.87.198:8555/live/michele/123456/139.ts?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="" group-title="VARIEDADES",TV Senado SD
 http://esrv.cc:80/eduardo002/72836392/18066.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/hBaG4Ce.png" group-title="Hobby",Terra Viva
+#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/hBaG4Ce.png" group-title="VARIEDADES",Terra Viva
 http://evpp.mm.uol.com.br:1935/band_live/terraviva/playlist.m3u8?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/67ae14268fb7afe688c18dd17fe11688.png" group-title="VARIEDADES",Travel Box Brazil 4K
 http://esrv.cc:80/eduardo002/72836392/41430.ts?checkedby:iptvcat.com
@@ -553,15 +553,15 @@ http://esrv.cc:80/eduardo002/72836392/60.ts?checkedby:iptvcat.com
 http://esrv.cc:80/eduardo002/72836392/61.ts?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/2bc2de8fcaa19642260bdb5613b44010.png" group-title="INFANTIL",Cartoon Network SD
 http://esrv.cc:80/eduardo002/72836392/62.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/0aec15914e8e6a3bbb2b362452581fe4.png" group-title="Kids",Discovery Kids 4K
+#EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/0aec15914e8e6a3bbb2b362452581fe4.png" group-title="INFANTIL",Discovery Kids 4K
 http://esrv.cc:80/eduardo002/72836392/41514.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/0aec15914e8e6a3bbb2b362452581fe4.png" group-title="Kids",Discovery Kids FHD
+#EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/0aec15914e8e6a3bbb2b362452581fe4.png" group-title="INFANTIL",Discovery Kids FHD
 http://esrv.cc:80/eduardo002/72836392/32058.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/0aec15914e8e6a3bbb2b362452581fe4.png" group-title="Kids",Discovery Kids FHD (H265)
+#EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/0aec15914e8e6a3bbb2b362452581fe4.png" group-title="INFANTIL",Discovery Kids FHD (H265)
 http://esrv.cc:80/eduardo002/72836392/104.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/0aec15914e8e6a3bbb2b362452581fe4.png" group-title="Kids",Discovery Kids HD
+#EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/0aec15914e8e6a3bbb2b362452581fe4.png" group-title="INFANTIL",Discovery Kids HD
 http://esrv.cc:80/eduardo002/72836392/105.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/0aec15914e8e6a3bbb2b362452581fe4.png" group-title="Kids",Discovery Kids SD
+#EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/0aec15914e8e6a3bbb2b362452581fe4.png" group-title="INFANTIL",Discovery Kids SD
 http://esrv.cc:80/eduardo002/72836392/106.ts?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="" group-title="INFANTIL",Disney Channel 4K
 http://esrv.cc:80/eduardo002/72836392/41327.ts?checkedby:iptvcat.com
@@ -1099,8 +1099,6 @@ http://esrv.cc:80/eduardo002/72836392/40015.ts?checkedby:iptvcat.com
 http://esrv.cc:80/eduardo002/72836392/391.ts?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/f8e3b0bbeb7a8f19433e3c5732dab7ab.png" group-title="FILMES",Space SD (Legendado)
 http://esrv.cc:80/eduardo002/72836392/40014.ts?checkedby:iptvcat.com
-#EXTINF:0 tvg-country="BR" tvg-logo="https://i.imgur.com/aMuMVvB.png" group-title="News",TCM 10 HD (1080p)
-https://live.tcm10.com.br/tcm10hd/stream.m3u8?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="http://esrv.cc:80/images/52ab0dde7197bee85937d58a6fc302a2.png" group-title="FILMES",TCM HD
 http://esrv.cc:80/eduardo002/72836392/411.ts?checkedby:iptvcat.com
 #EXTINF:0 tvg-country="BR" tvg-logo="" group-title="FILMES",TCM HD
