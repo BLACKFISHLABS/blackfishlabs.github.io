@@ -1,102 +1,109 @@
 <!doctype html>
-<html>
+<html lang="pt-BR" data-bs-theme="light">
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
+	<meta name="description"
+		content="blackfish.labs — tecnologia inteligente para trading. Monitoramento de mercados, grid trading automatizado e análise de commodities agrícolas.">
 	<meta name="author" content="Jeferson Cruz">
-	<meta name="theme-color" content="#359de0" />
+	<meta name="robots" content="index, follow">
+	<meta name="theme-color" content="#359de0">
+	<link rel="canonical" href="https://blackfishlabs.com.br/">
 	<link rel="icon" href="img/blackfish-favicon.png">
 	<link rel="manifest" href="./manifest.json">
-	<title>BLACKFISH LABS</title>
+	<title>blackfish.labs — tecnologia inteligente para trading</title>
 
-	<!-- JQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Open Graph / social sharing -->
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="blackfish.labs">
+	<meta property="og:title" content="blackfish.labs — tecnologia inteligente para trading">
+	<meta property="og:description"
+		content="Monitoramento de mercados, grid trading automatizado e análise de commodities agrícolas.">
+	<meta property="og:url" content="https://blackfishlabs.com.br/">
+	<meta property="og:image" content="https://blackfishlabs.com.br/img/blackfish-trade.png">
+	<meta property="og:locale" content="pt_BR">
 
-	<!-- Bootstrap core CSS/JS -->
+	<!-- Twitter Cards -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="blackfish.labs — tecnologia inteligente para trading">
+	<meta name="twitter:description"
+		content="Monitoramento de mercados, grid trading automatizado e análise de commodities agrícolas.">
+	<meta name="twitter:image" content="https://blackfishlabs.com.br/img/blackfish-trade.png">
+
+	<!-- Apply theme before render to avoid flash: stored preference, else follow system -->
+	<script>
+		(function () {
+			var stored = localStorage.getItem('theme');
+			var theme = stored ||
+				(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+			document.documentElement.setAttribute('data-bs-theme', theme);
+		})();
+	</script>
+
+	<!-- Bootstrap core CSS/JS (bundle includes Popper) -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 		crossorigin="anonymous"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
-		integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
-		crossorigin="anonymous"></script>
-
-	<!-- Fonts -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-		integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+	<!-- Font Awesome 6 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+		integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer">
 
 	<!-- Custom styles for this template -->
 	<link href="css/application.css" rel="stylesheet">
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-90994388-2"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'UA-90994388-2');
-	</script>
 </head>
 
 <body>
 
 	<main>
 		<div class="container py-4">
-			<header class="pb-3 mb-2 border-bottom">
+			<header class="d-flex justify-content-between align-items-center pb-3 mb-2 border-bottom">
 				<a href="/" class="d-flex align-items-center text-body-emphasis text-decoration-none">
-					<img src="img/blackfish-favicon.png" class="img-fluid" alt="" width="40" height="32" height="auto">
+					<img src="img/blackfish-favicon.png" class="img-fluid" alt="Logo da blackfish.labs" width="40"
+						height="32">
 					<span class="fs-4"><b>blackfish</b>.labs</span>
 				</a>
+				<button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm"
+					aria-label="Alternar tema claro/escuro" title="Alternar tema">
+					<i class="fas fa-moon" aria-hidden="true"></i>
+				</button>
 			</header>
 
 			<div class="p-5 mb-4 bg-body-secondary rounded-3">
-				<div class="container-fluid py-2">
-					<div style="text-align:center">
-						<img src="img/blackfish-trade.png" class="img-fluid" alt="" width="400" height="auto">
-						<hr>
-						<p class="fs-4">
-							tecnologia <b>inteligente</b> para <b>trading</b>
-						</p>
-					</div>
+				<div class="container-fluid py-2 text-center">
+					<img src="img/blackfish-trade.png" class="img-fluid" alt="blackfish.labs - trading" width="400"
+						height="auto">
+					<hr>
+					<p class="fs-4">
+						tecnologia <b>inteligente</b> para <b>trading</b>
+					</p>
 				</div>
 			</div>
 
 			<div class="row align-items-md-stretch">
 				<div class="col-md-12 mb-3">
-					<div class="h-100 p-5 text-bg-dark border rounded-3">
-						<h2><i class="fas fa-chart-line fa-lg"></i>&nbsp;monitoring</h2>
+					<div class="h-100 p-5 bg-body-tertiary border rounded-3">
+						<h2><i class="fas fa-chart-line fa-lg" aria-hidden="true"></i>&nbsp;monitoring</h2>
 						<p>monitoramos comportamentos de indices, ativos financeiros e commodities para identificar
 							oportunidades em <b>opções</b>, <b>mercado futuro</b> e <b>spot</b>.</p>
-						<span class="badge rounded-pill bg-primary text-white">Jupyter Notebook</span>
-						<span class="badge rounded-pill bg-primary text-white">Python</span>
 					</div>
 				</div>
 				<div class="col-md-6 mb-3">
-					<div class="h-100 p-5 text-bg-dark border rounded-3">
-						<h2><i class="fas fa-robot fa-lg"></i>&nbsp;grid trading</h2>
+					<div class="h-100 p-5 bg-body-tertiary border rounded-3">
+						<h2><i class="fas fa-robot fa-lg" aria-hidden="true"></i>&nbsp;grid trading</h2>
 						<p>automação de negociações em mercados tradicionais e <b>blockchains</b> por meio de
 							algoritimos de <b>grid trading + bias</b>.</p>
-						<span class="badge rounded-pill bg-primary text-white">MQL5/C++</span>
-						<span class="badge rounded-pill bg-primary text-white">Python</span>
 					</div>
 				</div>
 				<div class="col-md-6 mb-3">
-					<div class="h-100 p-5 text-bg-dark border rounded-3">
-						<h2><i class="fas fa-leaf fa-lg"></i>&nbsp;agro commodities</h2>
+					<div class="h-100 p-5 bg-body-tertiary border rounded-3">
+						<h2><i class="fas fa-leaf fa-lg" aria-hidden="true"></i>&nbsp;agro commodities</h2>
 						<p>analisamos o mercado de <b>commodities agrícolas</b> em busca de oportunidades para operações
 							de <b>hedge</b> ou <b>alavancagem</b>.</p>
-						<span class="badge rounded-pill bg-primary text-white">Jupyter Notebook</span>
-						<span class="badge rounded-pill bg-primary text-white">Python</span>
 					</div>
 				</div>
 			</div>
@@ -106,12 +113,41 @@
 			</footer>
 		</div>
 	</main>
-</body>
 
-<script>
-	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('./sw.js');
-	}
-</script>
+	<script>
+		// Theme toggle (default: light, persisted in localStorage)
+		(function () {
+			var toggle = document.getElementById('theme-toggle');
+			var icon = toggle.querySelector('i');
+
+			function syncIcon() {
+				var current = document.documentElement.getAttribute('data-bs-theme');
+				icon.className = current === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+			}
+
+			syncIcon();
+
+			toggle.addEventListener('click', function () {
+				var current = document.documentElement.getAttribute('data-bs-theme');
+				var next = current === 'dark' ? 'light' : 'dark';
+				document.documentElement.setAttribute('data-bs-theme', next);
+				localStorage.setItem('theme', next);
+				syncIcon();
+			});
+
+			// Follow system theme changes while the user hasn't chosen manually
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+				if (localStorage.getItem('theme')) return;
+				document.documentElement.setAttribute('data-bs-theme', e.matches ? 'dark' : 'light');
+				syncIcon();
+			});
+		})();
+
+		// Service worker registration
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('./sw.js');
+		}
+	</script>
+</body>
 
 </html>
