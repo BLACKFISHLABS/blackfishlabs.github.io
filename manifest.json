@@ -1,16 +1,35 @@
 {
-	"name": "PWA",
-	"short_name": "PWA",
+	"name": "Blackfish Labs",
+	"short_name": "Blackfish",
+	"description": "Tecnologia inteligente para trading.",
 	"start_url": "/",
 	"display": "standalone",
 	"theme_color": "#359de0",
 	"background_color": "#359de0",
 	"icons": [
 		{
-			"src": "pwalogo.png",
+			"src": "pwalogo-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "pwalogo-512.png",
 			"sizes": "512x512",
 			"type": "image/png",
-            "purpose": "any maskable"
+			"purpose": "any"
+		},
+		{
+			"src": "pwalogo-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "pwalogo-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
 		}
 	]
 }
