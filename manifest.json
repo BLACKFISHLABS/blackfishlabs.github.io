@@ -1,7 +1,7 @@
 {
-	"name": "Blackfish Labs",
-	"short_name": "Blackfish",
-	"description": "Tecnologia inteligente para trading.",
+	"name": "blackfish.labs — tecnologia inteligente para trading",
+	"short_name": "blackfish.labs",
+	"description": "blackfish.labs — tecnologia inteligente para trading. Monitoramento de mercados, grid trading automatizado e análise de commodities agrícolas.",
 	"start_url": "/",
 	"display": "standalone",
 	"theme_color": "#359de0",
