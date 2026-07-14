@@ -1,28 +1,375 @@
-body {
-  font-family: 'Poppins', sans-serif;
+/* blackfish.labs
+   ------------------------------------------------------------------
+   Palette is deep water: a petrol accent on near-white paper, inverted
+   to a lit teal on an abyss ground. Type has three jobs and no more —
+   Space Grotesk states, Inter Tight explains, Space Mono counts. */
+
+:root {
+	--bf-paper: #fafbfb;
+	--bf-ink: #10161c;
+	--bf-muted: #5c6873;
+	--bf-line: #e2e7ea;
+	--bf-accent: #17707e;
+	--bf-tick: rgba(23, 112, 126, .26);
+	color-scheme: light;
+
+	/* Three voices, one per job: state, explain, count. */
+	--font-display: 'Space Grotesk', system-ui, sans-serif;
+	--font-body: 'Inter Tight', system-ui, sans-serif;
+	--font-mono: 'Space Mono', ui-monospace, monospace;
+	--display-weight: 700;
+	--display-tracking: -.03em;
 }
+
+[data-bs-theme="dark"] {
+	--bf-paper: #0b0f13;
+	--bf-ink: #e6eaed;
+	--bf-muted: #8b97a2;
+	--bf-line: #1e2831;
+	--bf-accent: #45b9cb;
+	--bf-tick: rgba(69, 185, 203, .24);
+	color-scheme: dark;
+}
+
+/* Hand the palette to Bootstrap so its utilities inherit the theme too.
+   This sheet loads after Bootstrap, so it wins both themes at equal specificity. */
+:root {
+	--bs-body-bg: var(--bf-paper);
+	--bs-body-color: var(--bf-ink);
+	--bs-emphasis-color: var(--bf-ink);
+	--bs-secondary-color: var(--bf-muted);
+	--bs-border-color: var(--bf-line);
+	--bs-link-color: var(--bf-accent);
+	--bs-link-hover-color: var(--bf-accent);
+	--bs-heading-color: var(--bf-ink);
+	--bs-body-font-family: var(--font-body);
+	--bs-body-font-size: 1.0625rem;
+	--bs-body-line-height: 1.6;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+}
+
+::selection {
+	background: var(--bf-accent);
+	color: var(--bf-paper);
+}
+
+:focus-visible {
+	outline: 2px solid var(--bf-accent);
+	outline-offset: 3px;
+}
+
+.shell {
+	max-width: 1040px;
+	padding-block: clamp(1.5rem, 4vw, 2.75rem) 2rem;
+}
+
+/* Icons ------------------------------------------------------------ */
 
 .icon {
-  width: 1em;
-  height: 1em;
-  fill: currentColor;
-  vertical-align: -0.125em;
-}
-
-.icon-lg {
-  width: 1.25em;
-  height: 1.25em;
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+	vertical-align: -0.125em;
 }
 
 /* The toggle shows the theme you would switch *to*. No attribute means light, per Bootstrap. */
 .icon-sun {
-  display: none;
+	display: none;
 }
 
 [data-bs-theme="dark"] .icon-sun {
-  display: inline-block;
+	display: inline-block;
 }
 
 [data-bs-theme="dark"] .icon-moon {
-  display: none;
+	display: none;
+}
+
+/* The logo art is black on transparent, so it needs flipping in the dark. */
+[data-bs-theme="dark"] .wordmark__mark,
+[data-bs-theme="dark"] .hero__mark {
+	filter: invert(1);
+}
+
+/* Masthead --------------------------------------------------------- */
+
+.masthead {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-bottom: 1.25rem;
+}
+
+.wordmark {
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+	font-family: var(--font-display);
+	font-size: 1.0625rem;
+	font-weight: 500;
+	letter-spacing: -.01em;
+	color: var(--bf-ink);
+	text-decoration: none;
+}
+
+.wordmark b {
+	font-weight: 700;
+}
+
+.wordmark__mark {
+	width: 20px;
+	height: 20px;
+}
+
+.toggle {
+	display: inline-grid;
+	place-items: center;
+	flex: none;
+	width: 34px;
+	height: 34px;
+	padding: 0;
+	border: 1px solid var(--bf-line);
+	border-radius: 2px;
+	background: none;
+	color: var(--bf-muted);
+	cursor: pointer;
+	transition: color .2s ease, border-color .2s ease;
+}
+
+.toggle:hover {
+	color: var(--bf-accent);
+	border-color: var(--bf-accent);
+}
+
+/* Ladder — the signature. Grid trading works a ladder of evenly spaced
+   price levels, so the rules that divide this page are ruled in levels. */
+
+.ladder {
+	height: 12px;
+	border-bottom: 1px solid var(--bf-line);
+	background-image:
+		repeating-linear-gradient(90deg, var(--bf-tick) 0 1px, transparent 1px 96px),
+		repeating-linear-gradient(90deg, var(--bf-tick) 0 1px, transparent 1px 12px);
+	background-size: 100% 8px, 100% 3px;
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+	transform-origin: left center;
+}
+
+/* Hero ------------------------------------------------------------- */
+
+.hero {
+	padding-block: clamp(3rem, 8vw, 5.5rem);
+}
+
+.eyebrow {
+	margin: 0 0 1.5rem;
+	font-family: var(--font-mono);
+	font-size: .6875rem;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+	color: var(--bf-accent);
+}
+
+.hero__title {
+	margin: 0;
+	font-family: var(--font-display);
+	font-size: clamp(2.5rem, 6.2vw, 4.25rem);
+	font-weight: var(--display-weight);
+	line-height: .98;
+	letter-spacing: var(--display-tracking);
+}
+
+/* The one word the machines don't supply, set in the reading face. */
+.hero__title em {
+	font-family: var(--font-body);
+	font-style: italic;
+	font-weight: 400;
+	letter-spacing: -.01em;
+	color: var(--bf-accent);
+}
+
+.hero__lead {
+	max-width: 36ch;
+	margin: 1.75rem 0 0;
+	color: var(--bf-muted);
+}
+
+/* Cropped to the fish: the file carries a "blackfish.trade" wordmark below it. */
+.hero__mark {
+	display: block;
+	width: 100%;
+	max-width: 280px;
+	margin-inline: auto;
+	aspect-ratio: 1000 / 800;
+	object-fit: cover;
+	object-position: center top;
+}
+
+@media (min-width: 992px) {
+	.hero__mark {
+		margin-inline: auto 0;
+	}
+}
+
+/* Practices -------------------------------------------------------- */
+
+.practice {
+	padding-block: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+.practice__title {
+	display: flex;
+	align-items: center;
+	gap: .625rem;
+	margin: 0;
+	font-family: var(--font-display);
+	font-size: 1.375rem;
+	font-weight: 700;
+	letter-spacing: -.02em;
+}
+
+.practice__title .icon {
+	flex: none;
+	width: 1.1em;
+	height: 1.1em;
+	color: var(--bf-accent);
+}
+
+.tags {
+	margin: .75rem 0 0;
+	font-family: var(--font-mono);
+	font-size: .6875rem;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--bf-muted);
+}
+
+.practice__body {
+	max-width: 56ch;
+	margin: 0;
+}
+
+.practice__body b {
+	font-weight: 600;
+}
+
+.cta {
+	display: inline-flex;
+	align-items: center;
+	gap: .45rem;
+	margin-top: 1.5rem;
+	padding-bottom: .3rem;
+	border-bottom: 1px solid var(--bf-tick);
+	font-family: var(--font-mono);
+	font-size: .75rem;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--bf-accent);
+	text-decoration: none;
+	transition: gap .2s ease, border-color .2s ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+	gap: .7rem;
+	border-bottom-color: var(--bf-accent);
+	color: var(--bf-accent);
+}
+
+/* Colophon --------------------------------------------------------- */
+
+.colophon {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-top: 1.5rem;
+	font-family: var(--font-mono);
+	font-size: .6875rem;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--bf-muted);
+}
+
+.colophon__tag {
+	color: var(--bf-accent);
+}
+
+/* Arrival — one sequence: the page settles, the levels draw themselves in. */
+
+@media (prefers-reduced-motion: no-preference) {
+
+	.masthead,
+	.hero,
+	.practice,
+	.colophon {
+		animation: rise .7s cubic-bezier(.2, .7, .2, 1) backwards;
+	}
+
+	.ladder {
+		animation: draw .8s cubic-bezier(.2, .7, .2, 1) backwards;
+	}
+
+	.masthead {
+		animation-delay: .02s;
+	}
+
+	.shell > .ladder {
+		animation-delay: .06s;
+	}
+
+	main > *:nth-child(1) {
+		animation-delay: .1s;
+	}
+
+	main > *:nth-child(2) {
+		animation-delay: .15s;
+	}
+
+	main > *:nth-child(3) {
+		animation-delay: .2s;
+	}
+
+	main > *:nth-child(4) {
+		animation-delay: .25s;
+	}
+
+	main > *:nth-child(5) {
+		animation-delay: .3s;
+	}
+
+	main > *:nth-child(6) {
+		animation-delay: .35s;
+	}
+
+	main > *:nth-child(7) {
+		animation-delay: .4s;
+	}
+
+	main > *:nth-child(8) {
+		animation-delay: .45s;
+	}
+
+	.colophon {
+		animation-delay: .5s;
+	}
+
+	@keyframes rise {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+	}
+
+	@keyframes draw {
+		from {
+			opacity: 0;
+			transform: scaleX(0);
+		}
+	}
 }

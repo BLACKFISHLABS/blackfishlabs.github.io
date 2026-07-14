@@ -4,8 +4,8 @@
 	"description": "blackfish.labs — tecnologia inteligente para trading. Monitoramento de mercados, grid trading automatizado e análise de commodities agrícolas.",
 	"start_url": "/",
 	"display": "standalone",
-	"theme_color": "#359de0",
-	"background_color": "#359de0",
+	"theme_color": "#fafbfb",
+	"background_color": "#fafbfb",
 	"icons": [
 		{
 			"src": "pwalogo-192.png",

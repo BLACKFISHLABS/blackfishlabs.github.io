@@ -1,4 +1,4 @@
-const CACHE_NAME = 'blackfish-cache-v3';
+const CACHE_NAME = 'blackfish-cache-v4';
 const ASSETS = [
 	'./',
 	'./index.html',
