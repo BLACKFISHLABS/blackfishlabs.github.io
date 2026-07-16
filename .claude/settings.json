@@ -41,7 +41,32 @@
       "Bash(bash variants.sh)",
       "Bash(agent-browser set *)",
       "Bash(agent-browser screenshot *)",
-      "Bash(agent-browser close *)"
+      "Bash(agent-browser close *)",
+      "Bash(http-server -p 5000 --silent)",
+      "Bash(curl -sI http://localhost:5000/css/application.css)",
+      "Bash(pkill -f \"http-server -p 5000\")",
+      "Bash(http-server -p 5000 -c-1 --silent)",
+      "Bash(curl -s http://localhost:5000/css/application.css)",
+      "Bash(kill 1043897)",
+      "Bash(kill 1051664)",
+      "Bash(fuser -k 5000/tcp)",
+      "Bash(agent-browser --session bf3 set media light)",
+      "Bash(agent-browser --session bf3 open \"http://localhost:5000/\")",
+      "Bash(agent-browser --session bf3 wait --load networkidle)",
+      "Bash(agent-browser --session bf3 screenshot --full /tmp/claude-1000/-home-jeferson-Work-web-blackfishlabs-github-io/9fbc32ea-ba74-4724-8a8b-dea54088bf48/scratchpad/v2-light.png)",
+      "Bash(agent-browser --session bf3 set viewport 390 844 2)",
+      "Bash(agent-browser --session bf3 screenshot --full /tmp/claude-1000/-home-jeferson-Work-web-blackfishlabs-github-io/9fbc32ea-ba74-4724-8a8b-dea54088bf48/scratchpad/v2-mobile.png)",
+      "Bash(agent-browser --session bf3 eval '\\(\\(\\) => { *)",
+      "Bash(agent-browser --session bf3 set viewport 1440 900 2)",
+      "Bash(agent-browser --session bf3 set media light reduced-motion)",
+      "Bash(agent-browser --session bf3 close)",
+      "Bash(agent-browser --session bf4 set viewport 1440 900 2)",
+      "Bash(agent-browser --session bf4 set media light)",
+      "Bash(agent-browser --session bf4 open \"http://localhost:5000/\")",
+      "Bash(agent-browser --session bf4 wait --load networkidle)",
+      "Bash(agent-browser --session bf4 eval '\\(\\(\\) => { *)",
+      "Bash(agent-browser --session bf4 set viewport 390 844 2)",
+      "Bash(agent-browser --session bf4 close)"
     ]
   }
 }

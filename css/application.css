@@ -19,6 +19,25 @@
 	--font-mono: 'Space Mono', ui-monospace, monospace;
 	--display-weight: 700;
 	--display-tracking: -.03em;
+
+	/* Type scale. Body is the fixed point and never moves; everything
+	   else interpolates between a 600px phone and a 1200px desk. */
+	--text-utility: clamp(.6875rem, .625rem + .167vw, .75rem);
+	--text-body: 1.0625rem;
+	--text-lead: clamp(1.0625rem, .9375rem + .333vw, 1.1875rem);
+	--text-title: clamp(1.375rem, 1.125rem + .667vw, 1.625rem);
+	--text-hero: clamp(2.5rem, 6.2vw, 4.25rem);
+
+	/* Spacing. One scale for everything inside a section; two fluid
+	   steps for the air between them. The hero breathes twice as hard. */
+	--s-2xs: .25rem;
+	--s-xs: .5rem;
+	--s-s: .75rem;
+	--s-m: 1rem;
+	--s-l: 1.5rem;
+	--s-xl: 2rem;
+	--rhythm-hero: clamp(3rem, 8vw, 5.5rem);
+	--rhythm-section: clamp(2.25rem, 4vw, 3.25rem);
 }
 
 [data-bs-theme="dark"] {
@@ -43,7 +62,7 @@
 	--bs-link-hover-color: var(--bf-accent);
 	--bs-heading-color: var(--bf-ink);
 	--bs-body-font-family: var(--font-body);
-	--bs-body-font-size: 1.0625rem;
+	--bs-body-font-size: var(--text-body);
 	--bs-body-line-height: 1.6;
 }
 
@@ -61,9 +80,12 @@ body {
 	outline-offset: 3px;
 }
 
+/* Bootstrap's container pads by half its gutter, so the page margin is
+   half of what's set here: 20px on a phone, 24px once there's room. */
 .shell {
+	--bs-gutter-x: clamp(2.5rem, 8vw, 3rem);
 	max-width: 1040px;
-	padding-block: clamp(1.5rem, 4vw, 2.75rem) 2rem;
+	padding-block: clamp(1.5rem, 4vw, 2.75rem) var(--s-xl);
 }
 
 /* Icons ------------------------------------------------------------ */
@@ -88,10 +110,18 @@ body {
 	display: none;
 }
 
-/* The logo art is black on transparent, so it needs flipping in the dark. */
-[data-bs-theme="dark"] .wordmark__mark,
-[data-bs-theme="dark"] .hero__mark {
+/* The chevron is a UI mark: it flips to stay legible against the ground. */
+[data-bs-theme="dark"] .wordmark__mark {
 	filter: invert(1);
+}
+
+/* The fish never flips. It is a *black*fish, so it keeps its ink in the
+   dark and earns a white edge instead of turning into its own negative.
+   The drop-shadows chain rather than stack — each one filters the result
+   of the last, so four passes close a continuous line around the alpha. */
+[data-bs-theme="dark"] .hero__mark {
+	filter:
+		drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff);
 }
 
 /* Masthead --------------------------------------------------------- */
@@ -100,14 +130,14 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 1rem;
-	padding-bottom: 1.25rem;
+	gap: var(--s-m);
+	padding-bottom: var(--s-l);
 }
 
 .wordmark {
 	display: inline-flex;
 	align-items: center;
-	gap: .5rem;
+	gap: var(--s-xs);
 	font-family: var(--font-display);
 	font-size: 1.0625rem;
 	font-weight: 500;
@@ -126,6 +156,7 @@ body {
 }
 
 .toggle {
+	position: relative;
 	display: inline-grid;
 	place-items: center;
 	flex: none;
@@ -138,6 +169,13 @@ body {
 	color: var(--bf-muted);
 	cursor: pointer;
 	transition: color .2s ease, border-color .2s ease;
+}
+
+/* Keep the 34px box the design wants, give the thumb the 44px it needs. */
+.toggle::after {
+	content: "";
+	position: absolute;
+	inset: -5px;
 }
 
 .toggle:hover {
@@ -163,13 +201,13 @@ body {
 /* Hero ------------------------------------------------------------- */
 
 .hero {
-	padding-block: clamp(3rem, 8vw, 5.5rem);
+	padding-block: var(--rhythm-hero);
 }
 
 .eyebrow {
-	margin: 0 0 1.5rem;
+	margin: 0 0 var(--s-l);
 	font-family: var(--font-mono);
-	font-size: .6875rem;
+	font-size: var(--text-utility);
 	letter-spacing: .16em;
 	text-transform: uppercase;
 	color: var(--bf-accent);
@@ -178,25 +216,27 @@ body {
 .hero__title {
 	margin: 0;
 	font-family: var(--font-display);
-	font-size: clamp(2.5rem, 6.2vw, 4.25rem);
+	font-size: var(--text-hero);
 	font-weight: var(--display-weight);
 	line-height: .98;
 	letter-spacing: var(--display-tracking);
+	text-wrap: balance;
 }
 
-/* The one word the machines don't supply, set in the reading face. */
+/* The one word the machines don't supply. Same face, same weight as the
+   rest of the line — colour alone carries it, and text-wrap: balance
+   happens to give it a line of its own. */
 .hero__title em {
-	font-family: var(--font-body);
-	font-style: italic;
-	font-weight: 400;
-	letter-spacing: -.01em;
+	font-style: normal;
 	color: var(--bf-accent);
 }
 
 .hero__lead {
 	max-width: 36ch;
-	margin: 1.75rem 0 0;
+	margin: var(--s-xl) 0 0;
+	font-size: var(--text-lead);
 	color: var(--bf-muted);
+	text-wrap: pretty;
 }
 
 /* Cropped to the fish: the file carries a "blackfish.trade" wordmark below it. */
@@ -219,16 +259,18 @@ body {
 /* Practices -------------------------------------------------------- */
 
 .practice {
-	padding-block: clamp(2.25rem, 4vw, 3.25rem);
+	padding-block: var(--rhythm-section);
 }
 
+/* The markup runs </svg> straight into the title text, so the gap here is
+   the only thing separating the icon from the word — it isn't decoration. */
 .practice__title {
 	display: flex;
 	align-items: center;
-	gap: .625rem;
+	gap: var(--s-m);
 	margin: 0;
 	font-family: var(--font-display);
-	font-size: 1.375rem;
+	font-size: var(--text-title);
 	font-weight: 700;
 	letter-spacing: -.02em;
 }
@@ -241,32 +283,31 @@ body {
 }
 
 .tags {
-	margin: .75rem 0 0;
+	margin: var(--s-s) 0 0;
 	font-family: var(--font-mono);
-	font-size: .6875rem;
+	font-size: var(--text-utility);
 	letter-spacing: .12em;
 	text-transform: uppercase;
 	color: var(--bf-muted);
 }
 
+/* No bold runs in here: the tags above each block already name the terms,
+   so the prose is left to read plainly. */
 .practice__body {
 	max-width: 56ch;
 	margin: 0;
-}
-
-.practice__body b {
-	font-weight: 600;
+	text-wrap: pretty;
 }
 
 .cta {
 	display: inline-flex;
 	align-items: center;
-	gap: .45rem;
-	margin-top: 1.5rem;
-	padding-bottom: .3rem;
+	gap: var(--s-xs);
+	margin-top: var(--s-l);
+	padding-bottom: var(--s-2xs);
 	border-bottom: 1px solid var(--bf-tick);
 	font-family: var(--font-mono);
-	font-size: .75rem;
+	font-size: var(--text-utility);
 	letter-spacing: .12em;
 	text-transform: uppercase;
 	color: var(--bf-accent);
@@ -276,7 +317,7 @@ body {
 
 .cta:hover,
 .cta:focus-visible {
-	gap: .7rem;
+	gap: var(--s-s);
 	border-bottom-color: var(--bf-accent);
 	color: var(--bf-accent);
 }
@@ -287,10 +328,10 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 1rem;
-	padding-top: 1.5rem;
+	gap: var(--s-m);
+	padding-top: var(--s-l);
 	font-family: var(--font-mono);
-	font-size: .6875rem;
+	font-size: var(--text-utility);
 	letter-spacing: .12em;
 	text-transform: uppercase;
 	color: var(--bf-muted);
@@ -300,63 +341,77 @@ body {
 	color: var(--bf-accent);
 }
 
-/* Arrival — one sequence: the page settles, the levels draw themselves in. */
+/* Arrival — one sequence: the page settles, the levels draw themselves in.
+   Every step is a multiple of --beat, so the whole thing is retimed from
+   one number and the last element lands inside a second. */
 
 @media (prefers-reduced-motion: no-preference) {
+
+	:root {
+		--beat: 40ms;
+	}
 
 	.masthead,
 	.hero,
 	.practice,
 	.colophon {
-		animation: rise .7s cubic-bezier(.2, .7, .2, 1) backwards;
+		animation: rise .5s cubic-bezier(.2, .7, .2, 1) backwards;
 	}
 
 	.ladder {
-		animation: draw .8s cubic-bezier(.2, .7, .2, 1) backwards;
+		animation: draw .6s cubic-bezier(.2, .7, .2, 1) backwards;
 	}
 
 	.masthead {
-		animation-delay: .02s;
+		animation-delay: 0s;
 	}
 
 	.shell > .ladder {
-		animation-delay: .06s;
+		animation-delay: var(--beat);
+	}
+
+	/* Two beats clear of the masthead, then one beat per element down the
+	   page. The catch-all keeps a ninth section from jumping the queue; it
+	   needs :nth-child(n) to outweigh the animation shorthand above, and it
+	   must stay above the explicit beats, which tie with it on specificity. */
+	main > *:nth-child(n) {
+		animation-delay: calc(10 * var(--beat));
 	}
 
 	main > *:nth-child(1) {
-		animation-delay: .1s;
+		animation-delay: calc(2 * var(--beat));
 	}
 
 	main > *:nth-child(2) {
-		animation-delay: .15s;
+		animation-delay: calc(3 * var(--beat));
 	}
 
 	main > *:nth-child(3) {
-		animation-delay: .2s;
+		animation-delay: calc(4 * var(--beat));
 	}
 
 	main > *:nth-child(4) {
-		animation-delay: .25s;
+		animation-delay: calc(5 * var(--beat));
 	}
 
 	main > *:nth-child(5) {
-		animation-delay: .3s;
+		animation-delay: calc(6 * var(--beat));
 	}
 
 	main > *:nth-child(6) {
-		animation-delay: .35s;
+		animation-delay: calc(7 * var(--beat));
 	}
 
 	main > *:nth-child(7) {
-		animation-delay: .4s;
+		animation-delay: calc(8 * var(--beat));
 	}
 
 	main > *:nth-child(8) {
-		animation-delay: .45s;
+		animation-delay: calc(9 * var(--beat));
 	}
 
 	.colophon {
-		animation-delay: .5s;
+		animation-delay: calc(10 * var(--beat));
 	}
 
 	@keyframes rise {
