@@ -3,23 +3,23 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description"
-		content="blackfish.labs — tecnologia inteligente para trading. Monitoramento de mercados, grid trading automatizado e análise de commodities agrícolas.">
+		content="blackfish.labs é um laboratório de trading proprietário. Desde 2020 construímos e operamos os nossos próprios sistemas de monitoramento de mercados, grid trading e análise de commodities agrícolas.">
 	<meta name="author" content="Jeferson Cruz">
 	<meta name="robots" content="index, follow">
-	<meta name="theme-color" content="#fafbfb">
+	<meta name="theme-color" content="#f5f8f8">
 	<link rel="canonical" href="https://blackfishlabs.com.br/">
 	<link rel="icon" href="img/blackfish-favicon.png">
 	<link rel="manifest" href="./manifest.json">
-	<title>blackfish.labs — tecnologia inteligente para trading</title>
+	<title>blackfish.labs — laboratório de tecnologia para trading</title>
 
 	<!-- Open Graph / social sharing. X/Twitter falls back to these, so only twitter:card is needed. -->
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="blackfish.labs">
-	<meta property="og:title" content="blackfish.labs — tecnologia inteligente para trading">
+	<meta property="og:title" content="blackfish.labs — laboratório de tecnologia para trading">
 	<meta property="og:description"
-		content="blackfish.labs — tecnologia inteligente para trading. Monitoramento de mercados, grid trading automatizado e análise de commodities agrícolas.">
+		content="Desde 2020 construímos e operamos os nossos próprios sistemas: monitoramento de mercados, grid trading e análise de commodities agrícolas.">
 	<meta property="og:url" content="https://blackfishlabs.com.br/">
 	<meta property="og:image" content="https://blackfishlabs.com.br/img/blackfish-trade.png">
 	<meta property="og:locale" content="pt_BR">
@@ -29,12 +29,12 @@
 		// Owns the theme for every surface that reacts to it. Runs before first paint to avoid a flash.
 		var BlackfishTheme = (function () {
 			var KEY = 'theme';
-			var COLORS = { light: '#fafbfb', dark: '#0b0f13' };
+			var COLORS = { light: '#f5f8f8', dark: '#070c0f' };
 			var media = window.matchMedia('(prefers-color-scheme: dark)');
 			var themeColor = document.querySelector('meta[name="theme-color"]');
 
 			function stored() {
-				return localStorage.getItem(KEY);
+				try { return localStorage.getItem(KEY); } catch (e) { return null; }
 			}
 
 			function resolve() {
@@ -42,12 +42,12 @@
 			}
 
 			function apply(theme) {
-				document.documentElement.setAttribute('data-bs-theme', theme);
+				document.documentElement.setAttribute('data-theme', theme);
 				themeColor.setAttribute('content', COLORS[theme]);
 			}
 
 			function choose(theme) {
-				localStorage.setItem(KEY, theme);
+				try { localStorage.setItem(KEY, theme); } catch (e) { }
 				apply(theme);
 			}
 
@@ -60,132 +60,428 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400&display=swap">
-
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+		href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..115,400..800&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500&display=swap">
 	<link href="css/application.css" rel="stylesheet">
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "Organization",
+				"@id": "https://blackfishlabs.com.br/#org",
+				"name": "blackfish.labs",
+				"description": "Laboratório de tecnologia para trading. Constrói e opera sistemas próprios de monitoramento de mercados, grid trading e análise de commodities agrícolas.",
+				"url": "https://blackfishlabs.com.br/",
+				"logo": "https://blackfishlabs.com.br/pwalogo-512.png",
+				"image": "https://blackfishlabs.com.br/img/blackfish-trade.png",
+				"email": "dev.blackfishlabs@gmail.com",
+				"foundingDate": "2020",
+				"areaServed": "BR",
+				"knowsAbout": ["grid trading", "monitoramento de mercados", "commodities agrícolas", "hedge", "mercado futuro", "opções"],
+				"sameAs": ["https://github.com/BLACKFISHLABS"]
+			}
+		]
+	}
+	</script>
 </head>
 
 <body>
 
+	<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
 	<!-- Icon sprite (Font Awesome Free 6.5.2, CC BY 4.0) -->
-	<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-		<symbol id="icon-chart-line" viewBox="0 0 512 512">
+	<svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true" focusable="false">
+		<symbol id="i-chart" viewBox="0 0 512 512">
 			<path
 				d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
 		</symbol>
-		<symbol id="icon-robot" viewBox="0 0 640 512">
+		<symbol id="i-robot" viewBox="0 0 640 512">
 			<path
 				d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z" />
 		</symbol>
-		<symbol id="icon-leaf" viewBox="0 0 512 512">
+		<symbol id="i-leaf" viewBox="0 0 512 512">
 			<path
 				d="M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5h88c8.8 0 16 7.2 16 16s-7.2 16-16 16H288 216s0 0 0 0c-16.6 0-32.7 1.9-48.3 5.4c-25.9 5.9-49.9 16.4-71.4 30.7c0 0 0 0 0 0C38.3 298.8 0 364.9 0 440v16c0 13.3 10.7 24 24 24s24-10.7 24-24V440c0-48.7 20.7-92.5 53.8-123.2C121.6 392.3 190.3 448 272 448l1 0c132.1-.7 239-130.9 239-291.4c0-42.6-7.5-83.1-21.1-119.6c-2.6-6.9-12.7-6.6-16.2-.1C455.9 72.1 418.7 96 376 96L272 96z" />
 		</symbol>
-		<symbol id="icon-moon" viewBox="0 0 384 512">
+		<symbol id="i-shield" viewBox="0 0 512 512">
+			<path
+				d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0z" />
+		</symbol>
+		<symbol id="i-code" viewBox="0 0 640 512">
+			<path
+				d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z" />
+		</symbol>
+		<symbol id="i-check" viewBox="0 0 448 512">
+			<path
+				d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+		</symbol>
+		<symbol id="i-arrow" viewBox="0 0 448 512">
+			<path
+				d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+		</symbol>
+		<symbol id="i-github" viewBox="0 0 496 512">
+			<path
+				d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z" />
+		</symbol>
+		<symbol id="i-moon" viewBox="0 0 384 512">
 			<path
 				d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" />
 		</symbol>
-		<symbol id="icon-sun" viewBox="0 0 512 512">
+		<symbol id="i-sun" viewBox="0 0 512 512">
 			<path
 				d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z" />
 		</symbol>
 	</svg>
 
-	<div class="container shell">
-		<header class="masthead">
+	<header class="topbar" id="topbar">
+		<div class="wrap topbar__inner">
 			<a href="/" class="wordmark">
-				<img src="img/blackfish-favicon.png" class="wordmark__mark" alt="" width="20" height="20">
+				<img src="img/blackfish-favicon.png" class="wordmark__mark" alt="" width="22" height="22">
 				<span><b>blackfish</b>.labs</span>
 			</a>
-			<button id="theme-toggle" type="button" class="toggle" aria-label="Alternar tema claro/escuro"
-				title="Alternar tema">
-				<svg class="icon icon-moon" aria-hidden="true">
-					<use href="#icon-moon" />
-				</svg>
-				<svg class="icon icon-sun" aria-hidden="true">
-					<use href="#icon-sun" />
-				</svg>
-			</button>
-		</header>
-		<div class="ladder" aria-hidden="true"></div>
 
-		<main>
-			<section class="hero row align-items-center g-4">
-				<div class="col-lg-7">
-					<p class="eyebrow">laboratório de trading · desde 2020</p>
-					<h1 class="hero__title">tecnologia <em>inteligente</em> para trading</h1>
-					<p class="hero__lead">monitoramos, automatizamos e analisamos mercados — de índices a grãos.</p>
-				</div>
-				<div class="col-lg-5">
-					<img src="img/blackfish-trade.png" class="hero__mark" alt="" width="280" height="224">
-				</div>
-			</section>
+			<nav class="topnav" aria-label="Seções da página">
+				<a href="#frentes">Frentes</a>
+				<a href="#metodo">Método</a>
+				<a href="#principios">Princípios</a>
+			</nav>
 
-			<div class="ladder" aria-hidden="true"></div>
+			<div class="topbar__actions">
+				<button id="theme-toggle" type="button" class="toggle" aria-label="Alternar tema claro e escuro"
+					title="Alternar tema">
+					<svg class="icon icon-moon" aria-hidden="true">
+						<use href="#i-moon" />
+					</svg>
+					<svg class="icon icon-sun" aria-hidden="true">
+						<use href="#i-sun" />
+					</svg>
+				</button>
+			</div>
+		</div>
+	</header>
 
-			<section class="practice row g-3 g-md-4">
-				<div class="col-md-4">
-					<h2 class="practice__title">
-						<svg class="icon" aria-hidden="true">
-							<use href="#icon-chart-line" />
-						</svg>monitoring
-					</h2>
-					<p class="tags">índices · opções · futuro · spot</p>
-				</div>
-				<div class="col-md-8">
-					<p class="practice__body">monitoramos comportamentos de índices, ativos financeiros e commodities
-						para identificar oportunidades em opções, mercado futuro e spot.</p>
-				</div>
-			</section>
+	<main id="conteudo">
 
-			<div class="ladder" aria-hidden="true"></div>
+		<!-- Hero ---------------------------------------------------------- -->
+		<section class="hero">
+			<div class="wrap hero__grid">
+				<div class="hero__copy">
+					<p class="eyebrow">Trading proprietário · desde 2020</p>
+					<h1 class="hero__title">Construímos a tecnologia de trading que nós mesmos operamos.</h1>
+					<p class="hero__lead">
+						A blackfish.labs é um laboratório próprio. Desde 2020 monitoramos mercados, automatizamos
+						execução com grid trading e analisamos commodities agrícolas — em sistemas escritos por
+						nós, para a nossa operação.
+					</p>
 
-			<section class="practice row g-3 g-md-4">
-				<div class="col-md-4">
-					<h2 class="practice__title">
-						<svg class="icon" aria-hidden="true">
-							<use href="#icon-robot" />
-						</svg>grid trading
-					</h2>
-					<p class="tags">grid · bias · blockchains</p>
+					<div class="hero__actions">
+						<a class="btn btn--primary" href="#frentes">
+							Ver as três frentes
+							<svg class="icon" aria-hidden="true">
+								<use href="#i-arrow" />
+							</svg>
+						</a>
+					</div>
+					<p class="hero__reassure">Não operamos capital de terceiros.</p>
 				</div>
-				<div class="col-md-8">
-					<p class="practice__body">automação de negociações em mercados tradicionais e blockchains por
-						meio de algoritmos de grid trading + bias.</p>
-				</div>
-			</section>
 
-			<div class="ladder" aria-hidden="true"></div>
+				<figure class="ladder-panel" aria-labelledby="ladder-cap">
+					<div class="ladder-panel__bar">
+						<span class="ladder-panel__live"><i class="pip" aria-hidden="true"></i>grid ativo</span>
+						<span class="ladder-panel__meta">9 níveis · bias longo</span>
+					</div>
 
-			<section class="practice row g-3 g-md-4">
-				<div class="col-md-4">
-					<h2 class="practice__title">
-						<svg class="icon" aria-hidden="true">
-							<use href="#icon-leaf" />
-						</svg>agro commodities
-					</h2>
-					<p class="tags">hedge · alavancagem</p>
+					<div class="ladder-panel__body">
+						<svg class="ladder-panel__path" viewBox="0 0 300 216" preserveAspectRatio="none"
+							aria-hidden="true">
+							<polyline
+								points="0,166 30,158 58,174 84,148 112,156 140,126 168,134 196,102 224,110 252,84 278,94 300,72" />
+						</svg>
+						<ol class="levels">
+							<li class="level level--ask" style="--i:8"><span class="level__price">4.94</span><span
+									class="level__rule"></span><span class="level__tag">venda</span></li>
+							<li class="level level--ask" style="--i:7"><span class="level__price">4.88</span><span
+									class="level__rule"></span><span class="level__tag">venda</span></li>
+							<li class="level level--ask" style="--i:6"><span class="level__price">4.82</span><span
+									class="level__rule"></span><span class="level__tag">venda</span></li>
+							<li class="level level--ask" style="--i:5"><span class="level__price">4.76</span><span
+									class="level__rule"></span><span class="level__tag">venda</span></li>
+							<li class="level level--mid" style="--i:4"><span class="level__price">4.70</span><span
+									class="level__rule"></span><span class="level__tag">preço</span></li>
+							<li class="level level--bid is-filled" style="--i:3"><span
+									class="level__price">4.64</span><span class="level__rule"></span><span
+									class="level__tag">compra</span></li>
+							<li class="level level--bid is-filled" style="--i:2"><span
+									class="level__price">4.58</span><span class="level__rule"></span><span
+									class="level__tag">compra</span></li>
+							<li class="level level--bid is-filled" style="--i:1"><span
+									class="level__price">4.52</span><span class="level__rule"></span><span
+									class="level__tag">compra</span></li>
+							<li class="level level--bid is-filled" style="--i:0"><span
+									class="level__price">4.46</span><span class="level__rule"></span><span
+									class="level__tag">compra</span></li>
+						</ol>
+					</div>
+
+					<figcaption id="ladder-cap" class="ladder-panel__cap">
+						Uma grade de ordens: níveis de compra e venda distribuídos em torno do preço. Ilustração do
+						método, não de um resultado.
+					</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<!-- Problema → Solução --------------------------------------------- -->
+		<section class="section section--ruled problem" id="problema">
+			<div class="wrap">
+				<div class="section__head">
+					<p class="eyebrow">Por que construímos</p>
+					<h2 class="section__title">O plano quase sempre é bom. A execução manual é que não é.</h2>
 				</div>
-				<div class="col-md-8">
-					<p class="practice__body">analisamos o mercado de commodities agrícolas em busca de
-						oportunidades para operações de hedge ou alavancagem.</p>
-					<a href="https://agrilise.com.br" class="cta" target="_blank" rel="noopener noreferrer">
-						conheça a agrilise <span aria-hidden="true">↗</span>
-						<span class="visually-hidden">(abre em nova aba)</span>
+
+				<div class="split">
+					<ul class="painlist">
+						<li class="pain">
+							<h3 class="pain__title">A oportunidade aparece às 3h da manhã</h3>
+							<p class="pain__body">Cripto não fecha, o mercado futuro abre cedo e o grão se move o dia
+								inteiro. Nenhuma pessoa acordada cobre esse intervalo — e a janela raramente espera o
+								horário comercial.</p>
+						</li>
+						<li class="pain">
+							<h3 class="pain__title">A decisão muda com o humor</h3>
+							<p class="pain__body">A mesma regra sai de um jeito no lucro e de outro no prejuízo.
+								A inconsistência custa mais caro do que a estratégia errada.</p>
+						</li>
+						<li class="pain">
+							<h3 class="pain__title">A planilha chega tarde</h3>
+							<p class="pain__body">Dados de commodities vivem espalhados entre boletins, cotações e
+								câmbio. Quando a conta fecha na mão, a janela de hedge já passou.</p>
+						</li>
+					</ul>
+
+					<aside class="answer">
+						<p class="eyebrow">O que fizemos</p>
+						<p class="answer__lead">Software faz essas três coisas melhor do que qualquer pessoa:
+							observa sem cansar, executa sem hesitar e calcula sem atrasar.</p>
+						<p class="answer__body">Então foi isso que construímos — e continuamos construindo. Sistemas
+							que rodam <strong>as nossas regras</strong>, dentro dos <strong>nossos limites de
+								risco</strong>, na nossa própria operação. Este laboratório é o cliente dele mesmo.</p>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<!-- Frentes -------------------------------------------------------- -->
+		<section class="section section--ruled fronts" id="frentes">
+			<div class="wrap">
+				<div class="section__head">
+					<p class="eyebrow">As três frentes</p>
+					<h2 class="section__title">Uma engenharia só, do índice ao grão.</h2>
+					<p class="section__lead">Três frentes sobre a mesma base. O que muda entre elas é o mercado, o
+						horizonte e o que conta como risco.</p>
+				</div>
+
+				<div class="cards">
+					<article class="card">
+						<span class="card__icon">
+							<svg class="icon" aria-hidden="true">
+								<use href="#i-chart" />
+							</svg>
+						</span>
+						<h3 class="card__title">Enxergar o mercado inteiro, o tempo todo</h3>
+						<p class="card__body">Monitoramos o comportamento de índices, ativos financeiros e
+							commodities para identificar oportunidades em opções, mercado futuro e spot. O sinal
+							chega no momento em que o padrão aparece, não no fechamento.</p>
+						<p class="card__tags">Monitoramento · índices · opções · futuro · spot</p>
+					</article>
+
+					<article class="card">
+						<span class="card__icon">
+							<svg class="icon" aria-hidden="true">
+								<use href="#i-robot" />
+							</svg>
+						</span>
+						<h3 class="card__title">Executar a regra sem depender de ninguém</h3>
+						<p class="card__body">Automação de negociações em mercados tradicionais e blockchains por
+							meio de algoritmos de grid trading combinados com bias. A regra entra igual às 10h e às
+							3h da manhã, porque não é uma pessoa que a aplica.</p>
+						<p class="card__tags">Grid trading · grid · bias · blockchains</p>
+					</article>
+
+					<article class="card">
+						<span class="card__icon">
+							<svg class="icon" aria-hidden="true">
+								<use href="#i-leaf" />
+							</svg>
+						</span>
+						<h3 class="card__title">Ler o agro antes da decisão de hedge</h3>
+						<p class="card__body">Analisamos o mercado de commodities agrícolas em busca de
+							oportunidades para operações de hedge ou alavancagem — com boletim, cotação e câmbio já
+							reduzidos a um número na hora de decidir.</p>
+						<p class="card__tags">Agro commodities · hedge · alavancagem</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- Método --------------------------------------------------------- -->
+		<section class="section section--ruled method" id="metodo">
+			<div class="wrap">
+				<div class="section__head">
+					<p class="eyebrow">Como trabalhamos</p>
+					<h2 class="section__title">Como uma ideia vira um sistema em produção.</h2>
+				</div>
+
+				<ol class="steps">
+					<li class="step">
+						<span class="step__num">01</span>
+						<h3 class="step__title">Hipótese</h3>
+						<p class="step__body">Uma leitura de mercado vira regra escrita: níveis, bias, tamanho de
+							posição e o teto de risco que o sistema não pode ultrapassar.</p>
+					</li>
+					<li class="step">
+						<span class="step__num">02</span>
+						<h3 class="step__title">Backtest</h3>
+						<p class="step__body">A regra roda contra dados históricos, os períodos ruins inclusive.
+							A maior parte das hipóteses morre aqui — é exatamente para isso que a etapa existe.</p>
+					</li>
+					<li class="step">
+						<span class="step__num">03</span>
+						<h3 class="step__title">Capital pequeno</h3>
+						<p class="step__body">O que sobrevive vai ao ar com tamanho reduzido. Comportamento real,
+							dinheiro real, exposição mínima — porque histórico não é mercado.</p>
+					</li>
+					<li class="step">
+						<span class="step__num">04</span>
+						<h3 class="step__title">Produção</h3>
+						<p class="step__body">O sistema passa a operar em escala, monitorado. Segue em revisão
+							enquanto o mercado muda — e o mercado muda.</p>
+					</li>
+				</ol>
+			</div>
+		</section>
+
+		<!-- Diferenciais --------------------------------------------------- -->
+		<section class="section section--ruled edge" id="principios">
+			<div class="wrap">
+				<div class="section__head">
+					<p class="eyebrow">Princípios</p>
+					<h2 class="section__title">O que orienta cada sistema que colocamos no ar.</h2>
+				</div>
+
+				<ul class="edges">
+					<li class="edge-item">
+						<svg class="icon edge-item__icon" aria-hidden="true">
+							<use href="#i-check" />
+						</svg>
+						<div>
+							<h3 class="edge-item__title">Regra escrita antes do código</h3>
+							<p class="edge-item__body">Nenhum sistema nasce de intuição em tempo real. A regra é
+								escrita e revisada antes de virar implementação.</p>
+						</div>
+					</li>
+					<li class="edge-item">
+						<svg class="icon edge-item__icon" aria-hidden="true">
+							<use href="#i-shield" />
+						</svg>
+						<div>
+							<h3 class="edge-item__title">Risco é limite, não intenção</h3>
+							<p class="edge-item__body">O teto de exposição vive no código, não na disciplina de
+								quem está olhando a tela às três da manhã.</p>
+						</div>
+					</li>
+					<li class="edge-item">
+						<svg class="icon edge-item__icon" aria-hidden="true">
+							<use href="#i-chart" />
+						</svg>
+						<div>
+							<h3 class="edge-item__title">Backtest antes de capital</h3>
+							<p class="edge-item__body">Nada vai ao ar sem histórico, e o histórico inclui os
+								períodos ruins. Sem isso, é palpite com nome técnico.</p>
+						</div>
+					</li>
+					<li class="edge-item">
+						<svg class="icon edge-item__icon" aria-hidden="true">
+							<use href="#i-robot" />
+						</svg>
+						<div>
+							<h3 class="edge-item__title">Quem constrói é quem opera</h3>
+							<p class="edge-item__body">Não existe entregar e sair. Quem escreve o sistema é quem o
+								roda e quem responde pelo resultado dele.</p>
+						</div>
+					</li>
+					<li class="edge-item">
+						<svg class="icon edge-item__icon" aria-hidden="true">
+							<use href="#i-code" />
+						</svg>
+						<div>
+							<h3 class="edge-item__title">Sistema que não se observa não se controla</h3>
+							<p class="edge-item__body">Tudo que está em produção emite log, métrica e alerta. Um
+								algoritmo silencioso é um algoritmo que se descobre tarde demais.</p>
+						</div>
+					</li>
+					<li class="edge-item">
+						<svg class="icon edge-item__icon" aria-hidden="true">
+							<use href="#i-leaf" />
+						</svg>
+						<div>
+							<h3 class="edge-item__title">Do índice ao grão</h3>
+							<p class="edge-item__body">Um contrato futuro e uma saca de soja são séries temporais
+								com regras diferentes. A base de engenharia por baixo é a mesma.</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap">
+			<div class="site-footer__top">
+				<div class="site-footer__brand">
+					<a href="/" class="wordmark">
+						<img src="img/blackfish-favicon.png" class="wordmark__mark" alt="" width="22" height="22"
+							loading="lazy">
+						<span><b>blackfish</b>.labs</span>
 					</a>
+					<p class="site-footer__tag">Tecnologia inteligente para trading. Desde 2020.</p>
+					<div class="site-footer__links">
+						<a href="mailto:dev.blackfishlabs@gmail.com">dev.blackfishlabs@gmail.com</a>
+						<a href="https://github.com/BLACKFISHLABS" target="_blank" rel="noopener noreferrer">
+							<svg class="icon" aria-hidden="true">
+								<use href="#i-github" />
+							</svg> GitHub <span aria-hidden="true">↗</span>
+							<span class="sr-only">(abre em nova aba)</span>
+						</a>
+					</div>
 				</div>
-			</section>
 
-			<div class="ladder" aria-hidden="true"></div>
-		</main>
+				<nav class="site-footer__nav" aria-label="Rodapé">
+					<div class="site-footer__col">
+						<h2 class="site-footer__head">Laboratório</h2>
+						<a href="#frentes">Frentes</a>
+						<a href="#metodo">Método</a>
+						<a href="#principios">Princípios</a>
+					</div>
+				</nav>
+			</div>
 
-		<footer class="colophon">
-			<span>&copy; 2020–2026 · joc</span>
-			<span class="colophon__tag">buy bitcoin</span>
-		</footer>
-	</div>
+			<p class="disclaimer">
+				A blackfish.labs é um laboratório de tecnologia que constrói e opera sistemas para a sua própria
+				atividade. Não prestamos consultoria ou recomendação de investimento, não gerimos nem custodiamos
+				recursos de terceiros e não somos registrados na CVM para essas atividades. Operações em mercados
+				financeiros e de commodities envolvem risco de perda, inclusive superior ao capital aplicado.
+				Resultados passados não garantem resultados futuros.
+			</p>
+
+			<div class="site-footer__bottom">
+				<span>&copy; 2020–2026 blackfish.labs</span>
+				<span class="site-footer__sign">buy bitcoin</span>
+			</div>
+		</div>
+	</footer>
 
 	<script>
 		document.getElementById('theme-toggle').addEventListener('click', function () {
@@ -196,6 +492,16 @@
 		BlackfishTheme.media.addEventListener('change', function () {
 			if (!BlackfishTheme.stored()) BlackfishTheme.apply(BlackfishTheme.resolve());
 		});
+
+		// The header earns its edge only once the page has moved under it.
+		(function () {
+			var bar = document.getElementById('topbar');
+			var on = false;
+			addEventListener('scroll', function () {
+				var next = scrollY > 8;
+				if (next !== on) { on = next; bar.classList.toggle('is-stuck', on); }
+			}, { passive: true });
+		})();
 
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register('./sw.js');

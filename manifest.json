@@ -1,11 +1,11 @@
 {
 	"name": "blackfish.labs — tecnologia inteligente para trading",
 	"short_name": "blackfish.labs",
-	"description": "blackfish.labs — tecnologia inteligente para trading. Monitoramento de mercados, grid trading automatizado e análise de commodities agrícolas.",
+	"description": "Laboratório de tecnologia para trading: monitoramento de mercados, grid trading automatizado e análise de commodities agrícolas.",
 	"start_url": "/",
 	"display": "standalone",
-	"theme_color": "#fafbfb",
-	"background_color": "#fafbfb",
+	"theme_color": "#f5f8f8",
+	"background_color": "#f5f8f8",
 	"icons": [
 		{
 			"src": "pwalogo-192.png",
@@ -31,5 +31,11 @@
 			"type": "image/png",
 			"purpose": "maskable"
 		}
+	],
+	"lang": "pt-BR",
+	"categories": [
+		"finance",
+		"business",
+		"productivity"
 	]
 }

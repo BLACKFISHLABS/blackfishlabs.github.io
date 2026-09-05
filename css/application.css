@@ -1,149 +1,313 @@
 /* blackfish.labs
-   ------------------------------------------------------------------
-   Palette is deep water: a petrol accent on near-white paper, inverted
-   to a lit teal on an abyss ground. Type has three jobs and no more —
-   Space Grotesk states, Inter Tight explains, Space Mono counts. */
+   ==================================================================
+   Deep water, read as an instrument. The palette is a petrol accent on
+   cool paper, inverted to a lit teal on an abyss ground; a single rust
+   counterpoint exists only on the sell side of the order ladder, never
+   in a heading or a button. Type has three jobs and no more — Archivo
+   states, Inter Tight explains, IBM Plex Mono counts.
+
+   The signature is the ladder: grid trading works a ladder of evenly
+   spaced price levels, so the hero renders one, the process is ruled
+   into levels, and every divider is a level line.
+   ================================================================== */
+
+/* Tokens ----------------------------------------------------------- */
 
 :root {
-	--bf-paper: #fafbfb;
-	--bf-ink: #10161c;
-	--bf-muted: #5c6873;
-	--bf-line: #e2e7ea;
-	--bf-accent: #17707e;
-	--bf-tick: rgba(23, 112, 126, .26);
 	color-scheme: light;
 
-	/* Three voices, one per job: state, explain, count. */
-	--font-display: 'Space Grotesk', system-ui, sans-serif;
-	--font-body: 'Inter Tight', system-ui, sans-serif;
-	--font-mono: 'Space Mono', ui-monospace, monospace;
-	--display-weight: 700;
-	--display-tracking: -.03em;
+	--paper: #f5f8f8;
+	--surface: #ffffff;
+	--surface-2: #eef3f4;
+	--ink: #0b1317;
+	--ink-2: #2b3b43;
+	--muted: #5a6d76;
+	--line: #dfe8ea;
+	--line-strong: #c7d5d9;
+
+	--accent: #0f6d7a;
+	--accent-hi: #0b545e;
+	--accent-soft: rgba(15, 109, 122, .07);
+	--on-accent: #ffffff;
+	--counter: #b8503c;
+
+	--shadow-s: 0 1px 2px rgba(11, 19, 23, .04);
+	--shadow-m: 0 1px 2px rgba(11, 19, 23, .04), 0 12px 28px -16px rgba(11, 19, 23, .18);
+	--shadow-l: 0 1px 2px rgba(11, 19, 23, .05), 0 24px 48px -24px rgba(11, 19, 23, .24);
+	--shadow-cta: 0 1px 2px rgba(11, 19, 23, .12), 0 10px 22px -12px rgba(15, 109, 122, .55);
+
+	--f-display: 'Archivo', system-ui, -apple-system, sans-serif;
+	--f-body: 'Inter Tight', system-ui, -apple-system, sans-serif;
+	--f-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 
 	/* Type scale. Body is the fixed point and never moves; everything
-	   else interpolates between a 600px phone and a 1200px desk. */
-	--text-utility: clamp(.6875rem, .625rem + .167vw, .75rem);
-	--text-body: 1.0625rem;
-	--text-lead: clamp(1.0625rem, .9375rem + .333vw, 1.1875rem);
-	--text-title: clamp(1.375rem, 1.125rem + .667vw, 1.625rem);
-	--text-hero: clamp(2.5rem, 6.2vw, 4.25rem);
+	   else interpolates between a 380px phone and a 1200px desk. */
+	--t-mono: clamp(.6875rem, .655rem + .1vw, .75rem);
+	--t-sm: .9375rem;
+	--t-body: 1.0625rem;
+	--t-lead: clamp(1.0625rem, 1rem + .3vw, 1.25rem);
+	--t-h3: clamp(1.0625rem, 1rem + .28vw, 1.1875rem);
+	--t-h2: clamp(1.75rem, 1.4rem + 1.55vw, 2.625rem);
+	--t-h1: clamp(2.125rem, 1.5rem + 2.55vw, 3.3125rem);
 
-	/* Spacing. One scale for everything inside a section; two fluid
-	   steps for the air between them. The hero breathes twice as hard. */
-	--s-2xs: .25rem;
-	--s-xs: .5rem;
-	--s-s: .75rem;
-	--s-m: 1rem;
-	--s-l: 1.5rem;
-	--s-xl: 2rem;
-	--rhythm-hero: clamp(3rem, 8vw, 5.5rem);
-	--rhythm-section: clamp(2.25rem, 4vw, 3.25rem);
+	--s2: .5rem;
+	--s3: .75rem;
+	--s4: 1rem;
+	--s5: 1.5rem;
+	--s6: 2rem;
+	--s8: 4rem;
+
+	--wrap: 1160px;
+	--gutter: clamp(1.25rem, 5vw, 2.5rem);
+	--section-y: clamp(4rem, 8vw, 6.75rem);
+	--bar-h: 4.25rem;
+
+	--r-md: 9px;
+	--r-lg: 14px;
 }
 
-[data-bs-theme="dark"] {
-	--bf-paper: #0b0f13;
-	--bf-ink: #e6eaed;
-	--bf-muted: #8b97a2;
-	--bf-line: #1e2831;
-	--bf-accent: #45b9cb;
-	--bf-tick: rgba(69, 185, 203, .24);
+[data-theme="dark"] {
 	color-scheme: dark;
+
+	--paper: #070c0f;
+	--surface: #0e161b;
+	--surface-2: #121d23;
+	--ink: #e9eff1;
+	--ink-2: #c3d0d5;
+	--muted: #8496a0;
+	--line: #1c272e;
+	--line-strong: #2b3a43;
+
+	--accent: #4ac3d6;
+	--accent-hi: #7ad6e4;
+	--accent-soft: rgba(74, 195, 214, .10);
+	--on-accent: #06171b;
+	--counter: #e08a6f;
+
+	--shadow-s: 0 1px 2px rgba(0, 0, 0, .4);
+	--shadow-m: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 28px -16px rgba(0, 0, 0, .8);
+	--shadow-l: 0 1px 2px rgba(0, 0, 0, .5), 0 24px 48px -24px rgba(0, 0, 0, .9);
+	--shadow-cta: 0 1px 2px rgba(0, 0, 0, .5), 0 10px 22px -12px rgba(74, 195, 214, .35);
 }
 
-/* Hand the palette to Bootstrap so its utilities inherit the theme too.
-   This sheet loads after Bootstrap, so it wins both themes at equal specificity. */
-:root {
-	--bs-body-bg: var(--bf-paper);
-	--bs-body-color: var(--bf-ink);
-	--bs-emphasis-color: var(--bf-ink);
-	--bs-secondary-color: var(--bf-muted);
-	--bs-border-color: var(--bf-line);
-	--bs-link-color: var(--bf-accent);
-	--bs-link-hover-color: var(--bf-accent);
-	--bs-heading-color: var(--bf-ink);
-	--bs-body-font-family: var(--font-body);
-	--bs-body-font-size: var(--text-body);
-	--bs-body-line-height: 1.6;
+/* Base ------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
 }
 
 body {
+	margin: 0;
+	background: var(--paper);
+	color: var(--ink);
+	font-family: var(--f-body);
+	font-size: var(--t-body);
+	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+a {
+	color: var(--accent);
+	text-underline-offset: .18em;
+}
+
+p {
+	margin: 0;
+	text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	font-family: var(--f-display);
+	font-weight: 700;
+	line-height: 1.12;
+	letter-spacing: -.022em;
+	color: var(--ink);
+	text-wrap: balance;
+}
+
+strong {
+	font-weight: 500;
+	color: var(--ink);
 }
 
 ::selection {
-	background: var(--bf-accent);
-	color: var(--bf-paper);
+	background: var(--accent);
+	color: var(--on-accent);
 }
 
 :focus-visible {
-	outline: 2px solid var(--bf-accent);
+	outline: 2px solid var(--accent);
 	outline-offset: 3px;
+	border-radius: 2px;
 }
 
-/* Bootstrap's container pads by half its gutter, so the page margin is
-   half of what's set here: 20px on a phone, 24px once there's room. */
-.shell {
-	--bs-gutter-x: clamp(2.5rem, 8vw, 3rem);
-	max-width: 1040px;
-	padding-block: clamp(1.5rem, 4vw, 2.75rem) var(--s-xl);
+/* Utilities -------------------------------------------------------- */
+
+.wrap {
+	width: 100%;
+	max-width: var(--wrap);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
 }
 
-/* Icons ------------------------------------------------------------ */
+.sprite {
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
 
 .icon {
+	display: inline-block;
 	width: 1em;
 	height: 1em;
 	fill: currentColor;
-	vertical-align: -0.125em;
+	flex: none;
 }
 
-/* The toggle shows the theme you would switch *to*. No attribute means light, per Bootstrap. */
-.icon-sun {
-	display: none;
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
 }
 
-[data-bs-theme="dark"] .icon-sun {
-	display: inline-block;
+.skip-link {
+	position: fixed;
+	top: var(--s3);
+	left: var(--s3);
+	z-index: 100;
+	padding: var(--s3) var(--s4);
+	border-radius: var(--r-md);
+	background: var(--accent);
+	color: var(--on-accent);
+	font-size: var(--t-sm);
+	font-weight: 500;
+	text-decoration: none;
+	transform: translateY(-200%);
+	transition: transform .16s ease;
 }
 
-[data-bs-theme="dark"] .icon-moon {
-	display: none;
+.skip-link:focus-visible {
+	transform: none;
 }
 
-/* The chevron is a UI mark: it flips to stay legible against the ground. */
-[data-bs-theme="dark"] .wordmark__mark {
-	filter: invert(1);
+.eyebrow {
+	margin: 0 0 var(--s4);
+	font-family: var(--f-mono);
+	font-size: var(--t-mono);
+	font-weight: 500;
+	letter-spacing: .15em;
+	text-transform: uppercase;
+	color: var(--accent);
 }
 
-/* The fish never flips. It is a *black*fish, so it keeps its ink in the
-   dark and earns a white edge instead of turning into its own negative.
-   The drop-shadows chain rather than stack — each one filters the result
-   of the last, so four passes close a continuous line around the alpha. */
-[data-bs-theme="dark"] .hero__mark {
-	filter:
-		drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff);
+/* Buttons ---------------------------------------------------------- */
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: .55rem;
+	padding: .875rem 1.375rem;
+	border: 1px solid transparent;
+	border-radius: var(--r-md);
+	font-family: var(--f-body);
+	font-size: var(--t-sm);
+	font-weight: 500;
+	line-height: 1.25;
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: background-color .16s ease, border-color .16s ease, color .16s ease,
+		box-shadow .16s ease, transform .12s ease;
 }
 
-/* Masthead --------------------------------------------------------- */
+.btn .icon {
+	width: .8em;
+	height: .8em;
+	transition: transform .18s cubic-bezier(.2, .8, .3, 1);
+}
 
-.masthead {
+.btn:hover .icon {
+	transform: translateX(3px);
+}
+
+.btn:active {
+	transform: translateY(1px);
+}
+
+.btn--primary {
+	background: var(--accent);
+	color: var(--on-accent);
+	box-shadow: var(--shadow-cta);
+}
+
+.btn--primary:hover {
+	background: var(--accent-hi);
+}
+
+/* Topbar ----------------------------------------------------------- */
+
+.topbar {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	border-bottom: 1px solid transparent;
+	background: color-mix(in srgb, var(--paper) 82%, transparent);
+	backdrop-filter: saturate(1.4) blur(12px);
+	transition: border-color .2s ease, background-color .2s ease;
+}
+
+.topbar.is-stuck {
+	border-bottom-color: var(--line);
+}
+
+.topbar__inner {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: var(--s-m);
-	padding-bottom: var(--s-l);
+	gap: var(--s4);
+	min-height: var(--bar-h);
+}
+
+@media (min-width: 900px) {
+	.topbar__inner {
+		gap: var(--s5);
+	}
 }
 
 .wordmark {
 	display: inline-flex;
 	align-items: center;
-	gap: var(--s-xs);
-	font-family: var(--font-display);
+	gap: .5rem;
+	font-family: var(--f-display);
 	font-size: 1.0625rem;
 	font-weight: 500;
-	letter-spacing: -.01em;
-	color: var(--bf-ink);
+	letter-spacing: -.015em;
+	color: var(--ink);
 	text-decoration: none;
+	white-space: nowrap;
 }
 
 .wordmark b {
@@ -151,8 +315,60 @@ body {
 }
 
 .wordmark__mark {
-	width: 20px;
-	height: 20px;
+	width: 22px;
+	height: 22px;
+}
+
+/* The chevron is a UI mark: it flips to stay legible against the ground. */
+[data-theme="dark"] .wordmark__mark {
+	filter: invert(1);
+}
+
+.topnav {
+	display: none;
+	gap: var(--s5);
+	font-size: var(--t-sm);
+}
+
+.topnav a {
+	position: relative;
+	padding-block: .25rem;
+	color: var(--muted);
+	text-decoration: none;
+	transition: color .16s ease;
+}
+
+.topnav a::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 1px;
+	background: var(--accent);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform .2s cubic-bezier(.2, .8, .3, 1);
+}
+
+.topnav a:hover {
+	color: var(--ink);
+}
+
+.topnav a:hover::after {
+	transform: scaleX(1);
+}
+
+@media (min-width: 900px) {
+	.topnav {
+		display: flex;
+	}
+}
+
+.topbar__actions {
+	display: flex;
+	align-items: center;
+	gap: var(--s3);
 }
 
 .toggle {
@@ -160,271 +376,733 @@ body {
 	display: inline-grid;
 	place-items: center;
 	flex: none;
-	width: 34px;
-	height: 34px;
+	width: 36px;
+	height: 36px;
 	padding: 0;
-	border: 1px solid var(--bf-line);
-	border-radius: 2px;
+	border: 1px solid var(--line);
+	border-radius: var(--r-md);
 	background: none;
-	color: var(--bf-muted);
+	color: var(--muted);
 	cursor: pointer;
-	transition: color .2s ease, border-color .2s ease;
+	transition: color .16s ease, border-color .16s ease, background-color .16s ease;
 }
 
-/* Keep the 34px box the design wants, give the thumb the 44px it needs. */
+/* Keep the 36px box the design wants, give the thumb the 44px it needs. */
 .toggle::after {
 	content: "";
 	position: absolute;
-	inset: -5px;
+	inset: -4px;
 }
 
 .toggle:hover {
-	color: var(--bf-accent);
-	border-color: var(--bf-accent);
+	color: var(--accent);
+	border-color: var(--accent);
+	background: var(--accent-soft);
 }
 
-/* Ladder — the signature. Grid trading works a ladder of evenly spaced
-   price levels, so the rules that divide this page are ruled in levels. */
+/* The toggle shows the theme you would switch *to*. */
+.icon-sun {
+	display: none;
+}
 
-.ladder {
-	height: 12px;
-	border-bottom: 1px solid var(--bf-line);
-	background-image:
-		repeating-linear-gradient(90deg, var(--bf-tick) 0 1px, transparent 1px 96px),
-		repeating-linear-gradient(90deg, var(--bf-tick) 0 1px, transparent 1px 12px);
-	background-size: 100% 8px, 100% 3px;
-	background-position: 0 100%;
-	background-repeat: repeat-x;
-	transform-origin: left center;
+[data-theme="dark"] .icon-sun {
+	display: block;
+}
+
+[data-theme="dark"] .icon-moon {
+	display: none;
 }
 
 /* Hero ------------------------------------------------------------- */
 
 .hero {
-	padding-block: var(--rhythm-hero);
+	padding-block: clamp(3rem, 7vw, 5.5rem) clamp(3rem, 6vw, 4.5rem);
 }
 
-.eyebrow {
-	margin: 0 0 var(--s-l);
-	font-family: var(--font-mono);
-	font-size: var(--text-utility);
-	letter-spacing: .16em;
-	text-transform: uppercase;
-	color: var(--bf-accent);
+.hero__grid {
+	display: grid;
+	gap: clamp(2.5rem, 5vw, 4rem);
+	align-items: center;
+}
+
+@media (min-width: 940px) {
+	.hero__grid {
+		grid-template-columns: minmax(0, 1.16fr) minmax(0, 1fr);
+	}
 }
 
 .hero__title {
-	margin: 0;
-	font-family: var(--font-display);
-	font-size: var(--text-hero);
-	font-weight: var(--display-weight);
-	line-height: .98;
-	letter-spacing: var(--display-tracking);
-	text-wrap: balance;
-}
-
-/* The one word the machines don't supply. Same face, same weight as the
-   rest of the line — colour alone carries it, and text-wrap: balance
-   happens to give it a line of its own. */
-.hero__title em {
-	font-style: normal;
-	color: var(--bf-accent);
+	font-size: var(--t-h1);
+	font-weight: 800;
+	font-stretch: 105%;
+	line-height: 1.02;
+	letter-spacing: -.035em;
+	max-width: 19ch;
 }
 
 .hero__lead {
-	max-width: 36ch;
-	margin: var(--s-xl) 0 0;
-	font-size: var(--text-lead);
-	color: var(--bf-muted);
-	text-wrap: pretty;
+	max-width: 46ch;
+	margin-top: var(--s5);
+	font-size: var(--t-lead);
+	color: var(--muted);
 }
 
-/* Cropped to the fish: the file carries a "blackfish.trade" wordmark below it. */
-.hero__mark {
-	display: block;
-	width: 100%;
-	max-width: 280px;
-	margin-inline: auto;
-	aspect-ratio: 1000 / 800;
-	object-fit: cover;
-	object-position: center top;
+.hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s3);
+	margin-top: var(--s6);
 }
 
-@media (min-width: 992px) {
-	.hero__mark {
-		margin-inline: auto 0;
+/* Stacked buttons of different widths read as a ragged edge; on a phone
+   they take the full column instead, which also buys a bigger target. */
+.hero__actions .btn {
+	flex: 1 1 100%;
+}
+
+@media (min-width: 520px) {
+	.hero__actions .btn {
+		flex: 0 0 auto;
 	}
 }
 
-/* Practices -------------------------------------------------------- */
-
-.practice {
-	padding-block: var(--rhythm-section);
+.hero__reassure {
+	margin-top: var(--s3);
+	font-size: .875rem;
+	color: var(--muted);
 }
 
-/* The markup runs </svg> straight into the title text, so the gap here is
-   the only thing separating the icon from the word — it isn't decoration. */
-.practice__title {
-	display: flex;
-	align-items: center;
-	gap: var(--s-m);
+/* The ladder panel — the signature. A grid of orders around the price,
+   which is literally what the second frente does for a living. */
+
+.ladder-panel {
 	margin: 0;
-	font-family: var(--font-display);
-	font-size: var(--text-title);
-	font-weight: 700;
-	letter-spacing: -.02em;
+	border: 1px solid var(--line);
+	border-radius: var(--r-lg);
+	background: var(--surface);
+	box-shadow: var(--shadow-l);
+	overflow: hidden;
 }
 
-.practice__title .icon {
-	flex: none;
-	width: 1.1em;
-	height: 1.1em;
-	color: var(--bf-accent);
-}
-
-.tags {
-	margin: var(--s-s) 0 0;
-	font-family: var(--font-mono);
-	font-size: var(--text-utility);
-	letter-spacing: .12em;
-	text-transform: uppercase;
-	color: var(--bf-muted);
-}
-
-/* No bold runs in here: the tags above each block already name the terms,
-   so the prose is left to read plainly. */
-.practice__body {
-	max-width: 56ch;
-	margin: 0;
-	text-wrap: pretty;
-}
-
-.cta {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--s-xs);
-	margin-top: var(--s-l);
-	padding-bottom: var(--s-2xs);
-	border-bottom: 1px solid var(--bf-tick);
-	font-family: var(--font-mono);
-	font-size: var(--text-utility);
-	letter-spacing: .12em;
-	text-transform: uppercase;
-	color: var(--bf-accent);
-	text-decoration: none;
-	transition: gap .2s ease, border-color .2s ease;
-}
-
-.cta:hover,
-.cta:focus-visible {
-	gap: var(--s-s);
-	border-bottom-color: var(--bf-accent);
-	color: var(--bf-accent);
-}
-
-/* Colophon --------------------------------------------------------- */
-
-.colophon {
+.ladder-panel__bar {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: var(--s-m);
-	padding-top: var(--s-l);
-	font-family: var(--font-mono);
-	font-size: var(--text-utility);
-	letter-spacing: .12em;
+	gap: var(--s4);
+	padding: .8125rem 1.125rem;
+	border-bottom: 1px solid var(--line);
+	background: var(--surface-2);
+	font-family: var(--f-mono);
+	font-size: .6875rem;
+	letter-spacing: .1em;
 	text-transform: uppercase;
-	color: var(--bf-muted);
+	color: var(--muted);
 }
 
-.colophon__tag {
-	color: var(--bf-accent);
+.ladder-panel__live {
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+	color: var(--accent);
 }
 
-/* Arrival — one sequence: the page settles, the levels draw themselves in.
-   Every step is a multiple of --beat, so the whole thing is retimed from
-   one number and the last element lands inside a second. */
+.pip {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: currentColor;
+}
+
+.ladder-panel__body {
+	position: relative;
+	padding: 1.125rem 1.25rem;
+}
+
+.ladder-panel__path {
+	position: absolute;
+	inset: 1.125rem 1.25rem;
+	width: auto;
+	height: auto;
+	z-index: 0;
+}
+
+.ladder-panel__path polyline {
+	fill: none;
+	stroke: var(--muted);
+	stroke-width: 1.5;
+	stroke-linejoin: round;
+	stroke-linecap: round;
+	opacity: .45;
+	vector-effect: non-scaling-stroke;
+}
+
+.levels {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	gap: .4375rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.level {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	align-items: center;
+	gap: .875rem;
+	font-family: var(--f-mono);
+	font-size: .75rem;
+	color: var(--muted);
+}
+
+.level__price {
+	font-variant-numeric: tabular-nums;
+	letter-spacing: .01em;
+}
+
+.level__rule {
+	position: relative;
+	height: 1px;
+	background: var(--line);
+}
+
+.level__rule::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 50%;
+	translate: 0 -50%;
+	width: 8px;
+	height: 8px;
+	border: 1.5px solid currentColor;
+	border-radius: 50%;
+	background: var(--surface);
+}
+
+.level__tag {
+	min-width: 4.5em;
+	font-size: .625rem;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	text-align: right;
+	opacity: .8;
+}
+
+.level--bid .level__rule,
+.level--bid .level__tag {
+	color: var(--accent);
+}
+
+.level--ask .level__rule,
+.level--ask .level__tag {
+	color: var(--counter);
+}
+
+.level--mid .level__rule {
+	background: repeating-linear-gradient(90deg, var(--line-strong) 0 4px, transparent 4px 9px);
+	color: var(--ink);
+}
+
+.level--mid .level__price,
+.level--mid .level__tag {
+	color: var(--ink);
+}
+
+.is-filled .level__rule::after {
+	background: currentColor;
+}
+
+.level--mid .level__rule::after {
+	background: var(--ink);
+}
+
+.ladder-panel__cap {
+	padding: .875rem 1.25rem 1rem;
+	border-top: 1px solid var(--line);
+	font-size: .8125rem;
+	line-height: 1.45;
+	color: var(--muted);
+}
+
+/* Section frame ---------------------------------------------------- */
+
+.section {
+	padding-block: var(--section-y);
+	scroll-margin-top: var(--bar-h);
+}
+
+.section--ruled {
+	border-top: 1px solid var(--line);
+}
+
+.section__head {
+	max-width: 40rem;
+	margin-bottom: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+.section__title {
+	font-size: var(--t-h2);
+	font-stretch: 102%;
+}
+
+.section__lead {
+	margin-top: var(--s4);
+	font-size: var(--t-lead);
+	color: var(--muted);
+	max-width: 46ch;
+}
+
+/* Problem → solution ----------------------------------------------- */
+
+.split {
+	display: grid;
+	gap: clamp(2rem, 4vw, 3.5rem);
+	align-items: start;
+}
+
+@media (min-width: 900px) {
+	.split {
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+	}
+}
+
+.painlist {
+	display: grid;
+	gap: var(--s5);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.pain {
+	padding-top: var(--s5);
+	border-top: 1px solid var(--line);
+}
+
+.pain:first-child {
+	padding-top: 0;
+	border-top: 0;
+}
+
+.pain__title {
+	display: flex;
+	align-items: baseline;
+	gap: .625rem;
+	font-size: var(--t-h3);
+	font-weight: 700;
+}
+
+.pain__title::before {
+	content: "";
+	flex: none;
+	width: 14px;
+	height: 2px;
+	background: var(--counter);
+	translate: 0 -.3em;
+}
+
+.pain__body {
+	margin-top: var(--s2);
+	color: var(--muted);
+	max-width: 52ch;
+}
+
+.answer {
+	position: relative;
+	padding: clamp(1.5rem, 3vw, 2rem);
+	border: 1px solid var(--line);
+	border-radius: var(--r-lg);
+	background: var(--surface);
+	box-shadow: var(--shadow-m);
+}
+
+.answer__lead {
+	font-family: var(--f-display);
+	font-size: var(--t-h3);
+	font-weight: 700;
+	line-height: 1.28;
+	letter-spacing: -.02em;
+}
+
+.answer__body {
+	margin-top: var(--s4);
+	color: var(--muted);
+}
+
+.answer .btn {
+	margin-top: var(--s5);
+}
+
+/* Cards ------------------------------------------------------------ */
+
+.cards {
+	display: grid;
+	gap: var(--s5);
+}
+
+@media (min-width: 720px) {
+	.cards {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 1000px) {
+	.cards {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: clamp(1.5rem, 2.5vw, 1.875rem);
+	border: 1px solid var(--line);
+	border-radius: var(--r-lg);
+	background: var(--surface);
+	box-shadow: var(--shadow-s);
+	transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.card:hover {
+	border-color: var(--line-strong);
+	box-shadow: var(--shadow-m);
+	transform: translateY(-2px);
+}
+
+.card__icon {
+	display: grid;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	margin-bottom: var(--s5);
+	border-radius: var(--r-md);
+	background: var(--accent-soft);
+	color: var(--accent);
+	font-size: 1.125rem;
+}
+
+.card__title {
+	font-size: var(--t-h3);
+	line-height: 1.24;
+}
+
+.card__body {
+	margin-top: var(--s3);
+	margin-bottom: var(--s2);
+	color: var(--muted);
+}
+
+.card__tags {
+	width: 100%;
+	margin-top: auto;
+	padding-top: var(--s4);
+	border-top: 1px solid var(--line);
+	font-family: var(--f-mono);
+	font-size: var(--t-mono);
+	letter-spacing: .09em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+
+/* Method — the process is ruled into levels, because it is a sequence. */
+
+.steps {
+	display: grid;
+	gap: var(--s6) var(--s5);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@media (min-width: 620px) {
+	.steps {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 1000px) {
+	.steps {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+.step {
+	position: relative;
+	padding-top: var(--s5);
+	border-top: 1px solid var(--line);
+}
+
+.step::before {
+	content: "";
+	position: absolute;
+	top: -1px;
+	left: 0;
+	width: 2.25rem;
+	height: 2px;
+	background: var(--accent);
+}
+
+.step__num {
+	display: block;
+	margin-bottom: .625rem;
+	font-family: var(--f-mono);
+	font-size: var(--t-mono);
+	font-weight: 500;
+	letter-spacing: .16em;
+	color: var(--accent);
+}
+
+.step__title {
+	font-size: var(--t-h3);
+}
+
+.step__body {
+	margin-top: var(--s2);
+	font-size: var(--t-sm);
+	line-height: 1.6;
+	color: var(--muted);
+}
+
+/* Differentiators -------------------------------------------------- */
+
+.edges {
+	display: grid;
+	gap: var(--s6) clamp(1.5rem, 4vw, 3rem);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@media (min-width: 700px) {
+	.edges {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 1020px) {
+	.edges {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+.edge-item {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: var(--s4);
+	align-items: start;
+}
+
+.edge-item__icon {
+	width: 1.125rem;
+	height: 1.125rem;
+	margin-top: .3rem;
+	color: var(--accent);
+}
+
+.edge-item__title {
+	font-size: var(--t-h3);
+}
+
+.edge-item__body {
+	margin-top: var(--s2);
+	font-size: var(--t-sm);
+	line-height: 1.6;
+	color: var(--muted);
+}
+
+/* Footer ----------------------------------------------------------- */
+
+.site-footer {
+	padding-block: clamp(2.5rem, 5vw, 4rem) var(--s6);
+	border-top: 1px solid var(--line);
+	background: var(--surface-2);
+	font-size: var(--t-sm);
+}
+
+.site-footer__top {
+	display: grid;
+	gap: var(--s6);
+	padding-bottom: var(--s6);
+}
+
+@media (min-width: 720px) {
+	.site-footer__top {
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: var(--s8);
+	}
+}
+
+.site-footer__tag {
+	max-width: 32ch;
+	margin-top: var(--s3);
+	color: var(--muted);
+}
+
+.site-footer__links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s2) var(--s5);
+	margin-top: var(--s4);
+}
+
+.site-footer__links a {
+	display: inline-flex;
+	align-items: center;
+	gap: .4rem;
+	padding-block: .1875rem;
+	color: var(--ink-2);
+	text-decoration: none;
+	transition: color .16s ease;
+}
+
+.site-footer__links a:hover {
+	color: var(--accent);
+}
+
+.site-footer__col {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: .5rem;
+}
+
+.site-footer__head {
+	margin-bottom: .25rem;
+	font-family: var(--f-mono);
+	font-size: var(--t-mono);
+	font-weight: 500;
+	letter-spacing: .13em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.site-footer__col a {
+	display: inline-flex;
+	padding-block: .1875rem;
+	align-items: center;
+	gap: .4rem;
+	color: var(--ink-2);
+	text-decoration: none;
+	transition: color .16s ease;
+}
+
+.site-footer__col a:hover {
+	color: var(--accent);
+}
+
+.disclaimer {
+	padding-block: var(--s5);
+	border-top: 1px solid var(--line);
+	font-size: .75rem;
+	line-height: 1.6;
+	color: var(--muted);
+}
+
+.site-footer__bottom {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--s4);
+	padding-top: var(--s5);
+	border-top: 1px solid var(--line);
+	font-family: var(--f-mono);
+	font-size: var(--t-mono);
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.site-footer__sign {
+	color: var(--accent);
+}
+
+/* Arrival — one sequence, on the hero only. Nothing below the fold
+   waits for a scroll to become visible: content that is there is there. */
 
 @media (prefers-reduced-motion: no-preference) {
 
-	:root {
-		--beat: 40ms;
+	html {
+		scroll-behavior: smooth;
 	}
 
-	.masthead,
-	.hero,
-	.practice,
-	.colophon {
-		animation: rise .5s cubic-bezier(.2, .7, .2, 1) backwards;
+	.hero__copy > *,
+	.ladder-panel {
+		animation: rise .55s cubic-bezier(.2, .7, .2, 1) backwards;
 	}
 
-	.ladder {
-		animation: draw .6s cubic-bezier(.2, .7, .2, 1) backwards;
+	.hero__copy > *:nth-child(1) {
+		animation-delay: .04s;
 	}
 
-	.masthead {
-		animation-delay: 0s;
+	.hero__copy > *:nth-child(2) {
+		animation-delay: .1s;
 	}
 
-	.shell > .ladder {
-		animation-delay: var(--beat);
+	.hero__copy > *:nth-child(3) {
+		animation-delay: .16s;
 	}
 
-	/* Two beats clear of the masthead, then one beat per element down the
-	   page. The catch-all keeps a ninth section from jumping the queue; it
-	   needs :nth-child(n) to outweigh the animation shorthand above, and it
-	   must stay above the explicit beats, which tie with it on specificity. */
-	main > *:nth-child(n) {
-		animation-delay: calc(10 * var(--beat));
+	.hero__copy > *:nth-child(4) {
+		animation-delay: .22s;
 	}
 
-	main > *:nth-child(1) {
-		animation-delay: calc(2 * var(--beat));
+	.hero__copy > *:nth-child(5) {
+		animation-delay: .28s;
 	}
 
-	main > *:nth-child(2) {
-		animation-delay: calc(3 * var(--beat));
+	.ladder-panel {
+		animation-delay: .18s;
 	}
 
-	main > *:nth-child(3) {
-		animation-delay: calc(4 * var(--beat));
+	/* The grid fills from the inside out, the way a ladder actually works. */
+	.level__rule::after {
+		animation: pop .38s cubic-bezier(.2, .8, .3, 1) backwards;
+		animation-delay: calc(.65s + var(--i, 0) * .055s);
 	}
 
-	main > *:nth-child(4) {
-		animation-delay: calc(5 * var(--beat));
+	.ladder-panel__path polyline {
+		stroke-dasharray: 620;
+		stroke-dashoffset: 620;
+		animation: draw 1.5s cubic-bezier(.3, .7, .3, 1) .45s forwards;
 	}
 
-	main > *:nth-child(5) {
-		animation-delay: calc(6 * var(--beat));
-	}
-
-	main > *:nth-child(6) {
-		animation-delay: calc(7 * var(--beat));
-	}
-
-	main > *:nth-child(7) {
-		animation-delay: calc(8 * var(--beat));
-	}
-
-	main > *:nth-child(8) {
-		animation-delay: calc(9 * var(--beat));
-	}
-
-	.colophon {
-		animation-delay: calc(10 * var(--beat));
+	.pip {
+		animation: breathe 3.2s ease-in-out 1.6s infinite;
 	}
 
 	@keyframes rise {
 		from {
 			opacity: 0;
-			transform: translateY(10px);
+			transform: translateY(12px);
+		}
+	}
+
+	@keyframes pop {
+		from {
+			opacity: 0;
+			transform: scale(0);
 		}
 	}
 
 	@keyframes draw {
-		from {
-			opacity: 0;
-			transform: scaleX(0);
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+
+	@keyframes breathe {
+
+		0%,
+		100% {
+			opacity: 1;
+		}
+
+		50% {
+			opacity: .3;
 		}
 	}
 }
