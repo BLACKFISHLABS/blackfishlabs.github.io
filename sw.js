@@ -7,7 +7,7 @@
    back to cache when offline; images and icons, which are versioned by
    name and never edited in place, come from cache first. */
 
-const CACHE = 'blackfish-cache-v12';
+const CACHE = 'blackfish-cache-v13';
 
 const PRECACHE = [
 	'./',
