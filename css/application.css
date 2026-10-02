@@ -2,8 +2,8 @@
    ==================================================================
    Deep water, read as an instrument. The palette is a petrol accent on
    cool paper, inverted to a lit teal on an abyss ground; a single rust
-   counterpoint exists only on the down candles of the hero chart, never
-   in a heading or a button. Type has two jobs and no more — Bai
+   counterpoint marks what goes against you — the down candles and the
+   pain list — never a heading or a button. Type has two jobs and no more — Bai
    Jamjuree states and explains, IBM Plex Mono counts.
 
    The signature is the trend read: the hero renders price above a
@@ -30,6 +30,7 @@
 	--accent-soft: rgba(15, 109, 122, .07);
 	--on-accent: #ffffff;
 	--counter: #b8503c;
+	--candle-up-alpha: .45;
 
 	--shadow-s: 0 1px 2px rgba(11, 19, 23, .04);
 	--shadow-m: 0 1px 2px rgba(11, 19, 23, .04), 0 12px 28px -16px rgba(11, 19, 23, .18);
@@ -83,6 +84,7 @@
 	--accent-soft: rgba(74, 195, 214, .10);
 	--on-accent: #06171b;
 	--counter: #e08a6f;
+	--candle-up-alpha: .6;
 
 	--shadow-s: 0 1px 2px rgba(0, 0, 0, .4);
 	--shadow-m: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 28px -16px rgba(0, 0, 0, .8);
@@ -491,6 +493,11 @@ strong {
 	padding: .8125rem 1.125rem;
 	border-bottom: 1px solid var(--line);
 	background: var(--surface-2);
+}
+
+/* The bar and the legend are the panel's instrument labels. */
+.trend-panel__bar,
+.trend-legend {
 	font-family: var(--f-mono);
 	font-size: .6875rem;
 	letter-spacing: .1em;
@@ -498,10 +505,14 @@ strong {
 	color: var(--muted);
 }
 
-.trend-panel__live {
+.trend-panel__live,
+.trend-legend__item {
 	display: inline-flex;
 	align-items: center;
 	gap: .5rem;
+}
+
+.trend-panel__live {
 	color: var(--accent);
 }
 
@@ -518,63 +529,68 @@ strong {
 
 .trend-chart {
 	width: 100%;
-	height: auto;
-	overflow: visible;
 }
 
 .trend-chart__grid {
-	fill: none;
 	stroke: var(--line);
-	stroke-width: 1;
 	stroke-dasharray: 2 4;
 }
 
 /* The band between the averages is the trend itself; it opens at the cross. */
 .trend-chart__ribbon {
-	fill: var(--accent);
-	opacity: .1;
+	fill: var(--accent-soft);
 }
 
 /* Candles are context, so they sit back; the averages carry the read. */
 .candles {
-	stroke-width: 1;
+	fill: currentColor;
+	stroke: currentColor;
 }
 
 .candles--up {
-	fill: var(--accent);
-	stroke: var(--accent);
-	opacity: .45;
+	color: var(--accent);
+	opacity: var(--candle-up-alpha);
 }
 
 .candles--down {
-	fill: var(--counter);
-	stroke: var(--counter);
+	color: var(--counter);
 	opacity: .55;
 }
 
-[data-theme="dark"] .candles--up {
-	opacity: .6;
+/* Each series names its colour once; the line and its legend key share it. */
+.ema--20,
+.trend-legend__item--20 i {
+	color: var(--accent);
+}
+
+.ema--50,
+.trend-legend__item--50 i {
+	color: var(--ink-2);
+}
+
+.trend-chart__cross,
+.trend-legend__item--cross i {
+	color: var(--ink);
 }
 
 .ema {
 	fill: none;
+	stroke: currentColor;
 	stroke-linejoin: round;
 	stroke-linecap: round;
 }
 
 .ema--20 {
-	stroke: var(--accent);
 	stroke-width: 2.25;
 }
 
 .ema--50 {
-	stroke: var(--ink-2);
 	stroke-width: 1.75;
 }
 
 .trend-chart__cross {
 	fill: var(--surface);
-	stroke: var(--ink);
+	stroke: currentColor;
 	stroke-width: 1.5;
 }
 
@@ -585,46 +601,26 @@ strong {
 	margin: .875rem 0 0;
 	padding: 0;
 	list-style: none;
-	font-family: var(--f-mono);
-	font-size: .6875rem;
-	letter-spacing: .08em;
-	text-transform: uppercase;
-	color: var(--muted);
 }
 
-.trend-legend__item {
-	display: inline-flex;
-	align-items: center;
-	gap: .5rem;
-}
-
-.trend-legend__item b {
-	font-weight: 500;
+.trend-legend strong {
 	font-variant-numeric: tabular-nums;
 	letter-spacing: .01em;
-	color: var(--ink);
 }
 
 .trend-legend__item i {
 	width: 16px;
 	height: 2px;
 	border-radius: 2px;
-}
-
-.trend-legend__item--20 i {
-	height: 2.5px;
-	background: var(--accent);
-}
-
-.trend-legend__item--50 i {
-	background: var(--ink-2);
+	background: currentColor;
 }
 
 .trend-legend__item--cross i {
 	width: 8px;
 	height: 8px;
-	border: 1.5px solid var(--ink);
+	border: 1.5px solid;
 	border-radius: 50%;
+	background: none;
 }
 
 .trend-panel__cap {
@@ -1081,8 +1077,7 @@ strong {
 
 	.ema {
 		stroke-dasharray: 100;
-		stroke-dashoffset: 100;
-		animation: draw 1.5s cubic-bezier(.3, .7, .3, 1) .6s forwards;
+		animation: draw 1.5s cubic-bezier(.3, .7, .3, 1) .6s backwards;
 	}
 
 	.trend-chart__cross {
@@ -1120,8 +1115,8 @@ strong {
 	}
 
 	@keyframes draw {
-		to {
-			stroke-dashoffset: 0;
+		from {
+			stroke-dashoffset: 100;
 		}
 	}
 
