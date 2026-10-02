@@ -2,13 +2,13 @@
    ==================================================================
    Deep water, read as an instrument. The palette is a petrol accent on
    cool paper, inverted to a lit teal on an abyss ground; a single rust
-   counterpoint exists only on the sell side of the order ladder, never
+   counterpoint exists only on the down candles of the hero chart, never
    in a heading or a button. Type has two jobs and no more — Bai
    Jamjuree states and explains, IBM Plex Mono counts.
 
-   The signature is the ladder: grid trading works a ladder of evenly
-   spaced price levels, so the hero renders one, the process is ruled
-   into levels, and every divider is a level line.
+   The signature is the trend read: the hero renders price above a
+   rising EMA20 that crossed above the EMA50, the process is ruled into
+   levels, and every divider is a level line.
    ================================================================== */
 
 /* Tokens ----------------------------------------------------------- */
@@ -471,10 +471,10 @@ strong {
 	color: var(--muted);
 }
 
-/* The ladder panel — the signature. A grid of orders around the price,
-   which is literally what the second frente does for a living. */
+/* The trend panel — the signature. Price working above a rising EMA20,
+   which crossed and stays above the EMA50: the read behind every entry. */
 
-.ladder-panel {
+.trend-panel {
 	margin: 0;
 	border: 1px solid var(--line);
 	border-radius: var(--r-lg);
@@ -483,7 +483,7 @@ strong {
 	overflow: hidden;
 }
 
-.ladder-panel__bar {
+.trend-panel__bar {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -498,7 +498,7 @@ strong {
 	color: var(--muted);
 }
 
-.ladder-panel__live {
+.trend-panel__live {
 	display: inline-flex;
 	align-items: center;
 	gap: .5rem;
@@ -512,111 +512,122 @@ strong {
 	background: currentColor;
 }
 
-.ladder-panel__body {
-	position: relative;
-	padding: 1.125rem 1.25rem;
+.trend-panel__body {
+	padding: 1.125rem 1.25rem 1rem;
 }
 
-.ladder-panel__path {
-	position: absolute;
-	inset: 1.125rem 1.25rem;
-	width: auto;
+.trend-chart {
+	width: 100%;
 	height: auto;
-	z-index: 0;
+	overflow: visible;
 }
 
-.ladder-panel__path polyline {
+.trend-chart__grid {
 	fill: none;
-	stroke: var(--muted);
-	stroke-width: 1.5;
+	stroke: var(--line);
+	stroke-width: 1;
+	stroke-dasharray: 2 4;
+}
+
+/* The band between the averages is the trend itself; it opens at the cross. */
+.trend-chart__ribbon {
+	fill: var(--accent);
+	opacity: .1;
+}
+
+/* Candles are context, so they sit back; the averages carry the read. */
+.candles {
+	stroke-width: 1;
+}
+
+.candles--up {
+	fill: var(--accent);
+	stroke: var(--accent);
+	opacity: .45;
+}
+
+.candles--down {
+	fill: var(--counter);
+	stroke: var(--counter);
+	opacity: .55;
+}
+
+[data-theme="dark"] .candles--up {
+	opacity: .6;
+}
+
+.ema {
+	fill: none;
 	stroke-linejoin: round;
 	stroke-linecap: round;
-	opacity: .45;
-	vector-effect: non-scaling-stroke;
 }
 
-.levels {
-	position: relative;
-	z-index: 1;
-	display: grid;
-	gap: .4375rem;
-	margin: 0;
+.ema--20 {
+	stroke: var(--accent);
+	stroke-width: 2.25;
+}
+
+.ema--50 {
+	stroke: var(--ink-2);
+	stroke-width: 1.75;
+}
+
+.trend-chart__cross {
+	fill: var(--surface);
+	stroke: var(--ink);
+	stroke-width: 1.5;
+}
+
+.trend-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .375rem 1.25rem;
+	margin: .875rem 0 0;
 	padding: 0;
 	list-style: none;
-}
-
-.level {
-	display: grid;
-	grid-template-columns: auto minmax(0, 1fr) auto;
-	align-items: center;
-	gap: .875rem;
 	font-family: var(--f-mono);
-	font-size: .75rem;
+	font-size: .6875rem;
+	letter-spacing: .08em;
+	text-transform: uppercase;
 	color: var(--muted);
 }
 
-.level__price {
+.trend-legend__item {
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+}
+
+.trend-legend__item b {
+	font-weight: 500;
 	font-variant-numeric: tabular-nums;
 	letter-spacing: .01em;
+	color: var(--ink);
 }
 
-.level__rule {
-	position: relative;
-	height: 1px;
-	background: var(--line);
+.trend-legend__item i {
+	width: 16px;
+	height: 2px;
+	border-radius: 2px;
 }
 
-.level__rule::after {
-	content: "";
-	position: absolute;
-	right: 0;
-	top: 50%;
-	translate: 0 -50%;
+.trend-legend__item--20 i {
+	height: 2.5px;
+	background: var(--accent);
+}
+
+.trend-legend__item--50 i {
+	background: var(--ink-2);
+}
+
+.trend-legend__item--cross i {
 	width: 8px;
 	height: 8px;
-	border: 1.5px solid currentColor;
+	border: 1.5px solid var(--ink);
 	border-radius: 50%;
-	background: var(--surface);
 }
 
-.level__tag {
-	min-width: 4.5em;
-	font-size: .625rem;
-	letter-spacing: .1em;
-	text-transform: uppercase;
-	text-align: right;
-	opacity: .8;
-}
-
-.level--bid .level__rule,
-.level--bid .level__tag {
-	color: var(--accent);
-}
-
-.level--ask .level__rule,
-.level--ask .level__tag {
-	color: var(--counter);
-}
-
-.level--mid .level__rule {
-	background: repeating-linear-gradient(90deg, var(--line-strong) 0 4px, transparent 4px 9px);
-	color: var(--ink);
-}
-
-.level--mid .level__price,
-.level--mid .level__tag {
-	color: var(--ink);
-}
-
-.is-filled .level__rule::after {
-	background: currentColor;
-}
-
-.level--mid .level__rule::after {
-	background: var(--ink);
-}
-
-.ladder-panel__cap {
+.trend-panel__cap {
 	padding: .875rem 1.25rem 1rem;
 	border-top: 1px solid var(--line);
 	font-size: .8125rem;
@@ -1034,7 +1045,7 @@ strong {
 	}
 
 	.hero__copy > *,
-	.ladder-panel {
+	.trend-panel {
 		animation: rise .55s cubic-bezier(.2, .7, .2, 1) backwards;
 	}
 
@@ -1058,20 +1069,26 @@ strong {
 		animation-delay: .28s;
 	}
 
-	.ladder-panel {
+	.trend-panel {
 		animation-delay: .18s;
 	}
 
-	/* The grid fills from the inside out, the way a ladder actually works. */
-	.level__rule::after {
-		animation: pop .38s cubic-bezier(.2, .8, .3, 1) backwards;
-		animation-delay: calc(.65s + var(--i, 0) * .055s);
+	/* The chart plays left to right, the way the trend actually formed:
+	   candles first, then the averages catch up, then the cross is marked. */
+	.trend-chart__price {
+		animation: reveal 1.4s cubic-bezier(.3, .7, .3, 1) .45s backwards;
 	}
 
-	.ladder-panel__path polyline {
-		stroke-dasharray: 620;
-		stroke-dashoffset: 620;
-		animation: draw 1.5s cubic-bezier(.3, .7, .3, 1) .45s forwards;
+	.ema {
+		stroke-dasharray: 100;
+		stroke-dashoffset: 100;
+		animation: draw 1.5s cubic-bezier(.3, .7, .3, 1) .6s forwards;
+	}
+
+	.trend-chart__cross {
+		transform-box: fill-box;
+		transform-origin: center;
+		animation: pop .38s cubic-bezier(.2, .8, .3, 1) 1.15s backwards;
 	}
 
 	.pip {
@@ -1089,6 +1106,16 @@ strong {
 		from {
 			opacity: 0;
 			transform: scale(0);
+		}
+	}
+
+	@keyframes reveal {
+		from {
+			clip-path: inset(0 100% 0 0);
+		}
+
+		to {
+			clip-path: inset(0 0 0 0);
 		}
 	}
 

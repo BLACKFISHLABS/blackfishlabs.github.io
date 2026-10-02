@@ -186,47 +186,35 @@
 					<p class="hero__reassure">Não operamos capital de terceiros.</p>
 				</div>
 
-				<figure class="ladder-panel" aria-labelledby="ladder-cap">
-					<div class="ladder-panel__bar">
-						<span class="ladder-panel__live"><i class="pip" aria-hidden="true"></i>grid ativo</span>
-						<span class="ladder-panel__meta">9 níveis · bias longo</span>
+				<figure class="trend-panel" aria-labelledby="trend-cap">
+					<div class="trend-panel__bar">
+						<span class="trend-panel__live"><i class="pip" aria-hidden="true"></i>tendência de alta</span>
+						<span class="trend-panel__meta">EMA20 &gt; EMA50</span>
 					</div>
 
-					<div class="ladder-panel__body">
-						<svg class="ladder-panel__path" viewBox="0 0 300 216" preserveAspectRatio="none"
-							aria-hidden="true">
-							<polyline
-								points="0,166 30,158 58,174 84,148 112,156 140,126 168,134 196,102 224,110 252,84 278,94 300,72" />
+					<div class="trend-panel__body">
+						<svg class="trend-chart" viewBox="0 0 360 200" aria-hidden="true">
+							<path class="trend-chart__grid" d="M0 55H360M0 100H360M0 145H360" />
+							<g class="trend-chart__price">
+								<polygon class="trend-chart__ribbon" points="68.2,161.7 70.3,161.1 77.9,159.5 85.4,158.2 93,157.7 100.6,157.8 108.1,158.6 115.7,159.6 123.3,160.4 130.8,160.7 138.4,160.7 146,160.1 153.5,159 161.1,157.2 168.7,154.8 176.2,152.1 183.8,148.9 191.3,145.5 198.9,142.2 206.5,138.8 214,135.9 221.6,132.7 229.2,130 236.7,127.5 244.3,125.5 251.9,123.6 259.4,121.7 267,119.1 274.6,116.4 282.1,113.8 289.7,111 297.3,107.9 304.8,103.4 312.4,98.5 320,93.7 327.5,88.4 335.1,83 342.7,77.1 350.2,71.5 350.2,107.2 342.7,110.9 335.1,114.5 327.5,117.9 320,121.2 312.4,124.2 304.8,127.1 297.3,129.8 289.7,131.9 282.1,133.9 274.6,135.7 267,137.5 259.4,139.3 251.9,140.8 244.3,142.2 236.7,143.6 229.2,145.3 221.6,146.9 214,148.8 206.5,150.4 198.9,152.2 191.3,153.9 183.8,155.5 176.2,157.1 168.7,158.3 161.1,159.4 153.5,160.2 146,160.6 138.4,160.9 130.8,160.9 123.3,160.8 115.7,160.5 108.1,160.1 100.6,159.9 93,159.9 85.4,160.2 77.9,160.8 70.3,161.5" />
+								<path class="candles candles--down" d="M62.7 131.3V138.9M70.3 131.8V144.6M77.9 137.6V148.7M85.4 138.8V150.9M93 143.2V156.4M100.6 150.2V159.8M108.1 157.1V171.5M115.7 164.3V169.7M123.3 161.2V169.8M214 102.1V110M229.2 100.3V106M244.3 98.6V108.1M60.6 133.1h4.2v1.2h-4.2zM68.2 133.8h4.2v4.7h-4.2zM75.8 138.6h4.2v5.5h-4.2zM83.3 142.8h4.2v3.7h-4.2zM90.9 145.9h4.2v6.4h-4.2zM98.4 150.8h4.2v8.7h-4.2zM106 158.2h4.2v7.8h-4.2zM113.6 166.4h4.2v2.2h-4.2zM121.1 168.2h4.2v0.8h-4.2zM211.9 107.7h4.2v1h-4.2zM227.1 102.2h4.2v2.1h-4.2zM242.2 101.3h4.2v5.4h-4.2z" />
+								<path class="candles candles--up" d="M9.8 172.8V184.1M17.3 154V173.9M24.9 150.6V159.2M32.5 143.6V161.3M40 135.7V146.1M47.6 132.2V138.2M55.2 132.1V142.1M130.8 161V171.8M138.4 155.6V164.5M146 153.9V161.1M153.5 144.8V159.6M161.1 136.3V153.7M168.7 130.6V142.3M176.2 118.9V132.2M183.8 117.1V127.7M191.3 112.4V120.7M198.9 107.6V114.6M206.5 105.2V111.8M221.6 97V111.5M236.7 98.8V108.2M251.9 105.4V107.8M259.4 97.4V106.6M267 93.7V105.4M274.6 87.8V97.6M282.1 88.6V95.2M289.7 83.9V89.3M297.3 74.2V83.8M304.8 57.5V81.9M312.4 46.9V66.6M320 47.2V52.3M327.5 35.4V50.3M335.1 27.4V41.9M342.7 19.3V33.2M350.2 15.9V25.6M7.7 174.3h4.2v6.6h-4.2zM15.2 157.9h4.2v15.9h-4.2zM22.8 153.8h4.2v5h-4.2zM30.4 144.2h4.2v10.2h-4.2zM37.9 137.6h4.2v7h-4.2zM45.5 135.4h4.2v2.5h-4.2zM53.1 134.3h4.2v0.8h-4.2zM128.7 163.8h4.2v4.8h-4.2zM136.3 159.9h4.2v4h-4.2zM143.8 155h4.2v4.9h-4.2zM151.4 148.2h4.2v5.9h-4.2zM159 140.4h4.2v7.4h-4.2zM166.5 132h4.2v8h-4.2zM174.1 126.5h4.2v5.2h-4.2zM181.7 118.5h4.2v8.7h-4.2zM189.2 113.4h4.2v4.5h-4.2zM196.8 110.2h4.2v4.2h-4.2zM204.4 106.8h4.2v4.4h-4.2zM219.5 102.1h4.2v4.8h-4.2zM234.6 103.3h4.2v3.8h-4.2zM249.8 106.1h4.2v0.8h-4.2zM257.3 103.2h4.2v2h-4.2zM264.9 94.9h4.2v8.2h-4.2zM272.4 90.8h4.2v4.9h-4.2zM280 88.8h4.2v2.3h-4.2zM287.6 84.1h4.2v3.7h-4.2zM295.1 78.3h4.2v5.1h-4.2zM302.7 61.2h4.2v18.8h-4.2zM310.3 51.8h4.2v10.3h-4.2zM317.8 48.5h4.2v1.7h-4.2zM325.4 38.1h4.2v10.8h-4.2zM333 31.1h4.2v7.4h-4.2zM340.5 21.6h4.2v10.2h-4.2zM348.1 17.6h4.2v3.8h-4.2z" />
+							</g>
+							<polyline class="ema ema--50" pathLength="100" points="9.8,169.1 17.3,168.6 24.9,168.1 32.5,167.1 40,166 47.6,164.8 55.2,163.6 62.7,162.4 70.3,161.5 77.9,160.8 85.4,160.2 93,159.9 100.6,159.9 108.1,160.1 115.7,160.5 123.3,160.8 130.8,160.9 138.4,160.9 146,160.6 153.5,160.2 161.1,159.4 168.7,158.3 176.2,157.1 183.8,155.5 191.3,153.9 198.9,152.2 206.5,150.4 214,148.8 221.6,146.9 229.2,145.3 236.7,143.6 244.3,142.2 251.9,140.8 259.4,139.3 267,137.5 274.6,135.7 282.1,133.9 289.7,131.9 297.3,129.8 304.8,127.1 312.4,124.2 320,121.2 327.5,117.9 335.1,114.5 342.7,110.9 350.2,107.2" />
+							<polyline class="ema ema--20" pathLength="100" points="9.8,186.4 17.3,183.7 24.9,180.8 32.5,177.3 40,173.6 47.6,169.9 55.2,166.5 62.7,163.5 70.3,161.1 77.9,159.5 85.4,158.2 93,157.7 100.6,157.8 108.1,158.6 115.7,159.6 123.3,160.4 130.8,160.7 138.4,160.7 146,160.1 153.5,159 161.1,157.2 168.7,154.8 176.2,152.1 183.8,148.9 191.3,145.5 198.9,142.2 206.5,138.8 214,135.9 221.6,132.7 229.2,130 236.7,127.5 244.3,125.5 251.9,123.6 259.4,121.7 267,119.1 274.6,116.4 282.1,113.8 289.7,111 297.3,107.9 304.8,103.4 312.4,98.5 320,93.7 327.5,88.4 335.1,83 342.7,77.1 350.2,71.5" />
+							<circle class="trend-chart__cross" cx="68.2" cy="161.7" r="3.5" />
 						</svg>
-						<ol class="levels">
-							<li class="level level--ask" style="--i:8"><span class="level__price">4.94</span><span
-									class="level__rule"></span><span class="level__tag">venda</span></li>
-							<li class="level level--ask" style="--i:7"><span class="level__price">4.88</span><span
-									class="level__rule"></span><span class="level__tag">venda</span></li>
-							<li class="level level--ask" style="--i:6"><span class="level__price">4.82</span><span
-									class="level__rule"></span><span class="level__tag">venda</span></li>
-							<li class="level level--ask" style="--i:5"><span class="level__price">4.76</span><span
-									class="level__rule"></span><span class="level__tag">venda</span></li>
-							<li class="level level--mid" style="--i:4"><span class="level__price">4.70</span><span
-									class="level__rule"></span><span class="level__tag">preço</span></li>
-							<li class="level level--bid is-filled" style="--i:3"><span
-									class="level__price">4.64</span><span class="level__rule"></span><span
-									class="level__tag">compra</span></li>
-							<li class="level level--bid is-filled" style="--i:2"><span
-									class="level__price">4.58</span><span class="level__rule"></span><span
-									class="level__tag">compra</span></li>
-							<li class="level level--bid is-filled" style="--i:1"><span
-									class="level__price">4.52</span><span class="level__rule"></span><span
-									class="level__tag">compra</span></li>
-							<li class="level level--bid is-filled" style="--i:0"><span
-									class="level__price">4.46</span><span class="level__rule"></span><span
-									class="level__tag">compra</span></li>
-						</ol>
+
+						<ul class="trend-legend">
+							<li class="trend-legend__item trend-legend__item--20"><i aria-hidden="true"></i>EMA20 <b>4.78</b></li>
+							<li class="trend-legend__item trend-legend__item--50"><i aria-hidden="true"></i>EMA50 <b>4.66</b></li>
+							<li class="trend-legend__item trend-legend__item--cross"><i aria-hidden="true"></i>cruzamento</li>
+						</ul>
 					</div>
 
-					<figcaption id="ladder-cap" class="ladder-panel__cap">
-						Uma grade de ordens: níveis de compra e venda distribuídos em torno do preço. Ilustração do
-						método, não de um resultado.
+					<figcaption id="trend-cap" class="trend-panel__cap">
+						Tendência de alta: o preço trabalha acima da EMA20, que cruzou para cima e segue acima da
+						EMA50. Ilustração do método, não de um resultado.
 					</figcaption>
 				</figure>
 			</div>
@@ -243,12 +231,6 @@
 				<div class="split">
 					<ul class="painlist">
 						<li class="pain">
-							<h3 class="pain__title">A oportunidade aparece às 3h da manhã</h3>
-							<p class="pain__body">Cripto não fecha, o mercado futuro abre cedo e o grão se move o dia
-								inteiro. Nenhuma pessoa acordada cobre esse intervalo — e a janela raramente espera o
-								horário comercial.</p>
-						</li>
-						<li class="pain">
 							<h3 class="pain__title">A decisão muda com o humor</h3>
 							<p class="pain__body">A mesma regra sai de um jeito no lucro e de outro no prejuízo.
 								A inconsistência custa mais caro do que a estratégia errada.</p>
@@ -262,7 +244,7 @@
 
 					<aside class="answer">
 						<p class="eyebrow">O que fizemos</p>
-						<p class="answer__lead">Software faz essas três coisas melhor do que qualquer pessoa:
+						<p class="answer__lead">Software faz isso melhor do que qualquer pessoa:
 							observa sem cansar, executa sem hesitar e calcula sem atrasar.</p>
 						<p class="answer__body">Então foi isso que construímos — e continuamos construindo. Sistemas
 							que rodam <strong>as nossas regras</strong>, dentro dos <strong>nossos limites de
@@ -304,8 +286,8 @@
 						</span>
 						<h3 class="card__title">Executar a regra sem depender de ninguém</h3>
 						<p class="card__body">Automação de negociações em mercados tradicionais e blockchains por
-							meio de algoritmos de grid trading combinados com bias. A regra entra igual às 10h e às
-							3h da manhã, porque não é uma pessoa que a aplica.</p>
+							meio de algoritmos de grid trading combinados com bias. A regra entra igual na abertura e
+							no fechamento do pregão, porque não é uma pessoa que a aplica.</p>
 						<p class="card__tags">Grid trading · grid · bias · blockchains</p>
 					</article>
 
