@@ -30,7 +30,6 @@
 	--accent-soft: rgba(15, 109, 122, .07);
 	--on-accent: #ffffff;
 	--counter: #b8503c;
-	--candle-up-alpha: .45;
 
 	--shadow-s: 0 1px 2px rgba(11, 19, 23, .04);
 	--shadow-m: 0 1px 2px rgba(11, 19, 23, .04), 0 12px 28px -16px rgba(11, 19, 23, .18);
@@ -84,7 +83,6 @@
 	--accent-soft: rgba(74, 195, 214, .10);
 	--on-accent: #06171b;
 	--counter: #e08a6f;
-	--candle-up-alpha: .6;
 
 	--shadow-s: 0 1px 2px rgba(0, 0, 0, .4);
 	--shadow-m: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 28px -16px rgba(0, 0, 0, .8);
@@ -418,32 +416,58 @@ strong {
 /* Hero ------------------------------------------------------------- */
 
 .hero {
+	--paper: #071832;
+	--surface: #0c2242;
+	--surface-2: #102b50;
+	--ink: #f3f8ff;
+	--ink-2: #c3d3e8;
+	--muted: #a7bbd5;
+	--line: rgba(165, 194, 228, .18);
+	--accent: #39a7ff;
+	--accent-hi: #70c4ff;
+	--accent-soft: rgba(57, 167, 255, .13);
+	--on-accent: #06172e;
+	--counter: #ff947e;
+	position: relative;
+	overflow: hidden;
 	padding-block: clamp(3rem, 7vw, 5.5rem) clamp(3rem, 6vw, 4.5rem);
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(19, 75, 139, .42), transparent 60%),
+		repeating-linear-gradient(124deg, transparent 0 52px, rgba(89, 143, 206, .055) 53px, transparent 54px 84px),
+		var(--paper);
+	color: var(--ink);
 }
 
 .hero__grid {
 	display: grid;
 	gap: clamp(2.5rem, 5vw, 4rem);
 	align-items: center;
+	justify-items: center;
+	text-align: center;
 }
 
-@media (min-width: 940px) {
-	.hero__grid {
-		grid-template-columns: minmax(0, 1.16fr) minmax(0, 1fr);
-	}
+.hero__copy {
+	max-width: 880px;
 }
 
 .hero__title {
-	font-size: var(--t-h1);
+	max-width: 22ch;
+	margin-inline: auto;
+	font-size: clamp(2.5rem, 5.4vw, 4.5rem);
 	font-weight: 700;
-	line-height: 1.02;
-	letter-spacing: -.035em;
-	max-width: 19ch;
+	line-height: 1.04;
+	letter-spacing: -.04em;
+	color: var(--ink);
+}
+
+.hero__title span {
+	color: var(--accent);
 }
 
 .hero__lead {
-	max-width: 46ch;
+	max-width: 48ch;
 	margin-top: var(--s5);
+	margin-inline: auto;
 	font-size: var(--t-lead);
 	color: var(--muted);
 }
@@ -451,6 +475,7 @@ strong {
 .hero__actions {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 	gap: var(--s3);
 	margin-top: var(--s6);
 }
@@ -473,8 +498,69 @@ strong {
 	color: var(--muted);
 }
 
-/* The trend panel — the signature. Price working above a rising EMA20,
-   which crossed and stays above the EMA50: the read behind every entry. */
+.market-scope {
+	width: min(100%, 760px);
+}
+
+.market-scope__label {
+	margin-bottom: .35rem;
+	font-family: var(--f-mono);
+	font-size: var(--t-mono);
+	font-weight: 500;
+	letter-spacing: .15em;
+	text-align: center;
+	text-transform: uppercase;
+	color: var(--accent);
+}
+
+.market-scope__list {
+	display: grid;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.market-scope__item {
+	display: flex;
+	flex-direction: column;
+	gap: .25rem;
+	padding: .85rem 1rem;
+	border-top: 1px solid var(--line);
+	text-align: center;
+}
+
+.market-scope__item strong {
+	font-size: var(--t-sm);
+	font-weight: 500;
+	color: var(--ink);
+}
+
+.market-scope__item strong .market-scope__flag {
+	display: inline;
+	margin-right: .25rem;
+	font-size: 1rem;
+}
+
+.market-scope__item span {
+	font-size: .8125rem;
+	color: var(--muted);
+}
+
+@media (min-width: 620px) {
+	.market-scope__list {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.market-scope__item + .market-scope__item {
+		border-left: 1px solid var(--line);
+	}
+}
+
+.hero .trend-panel {
+	width: min(100%, 760px);
+}
+
+/* The market panel is illustrative and intentionally contains no strategy details. */
 
 .trend-panel {
 	margin: 0;
@@ -495,9 +581,7 @@ strong {
 	background: var(--surface-2);
 }
 
-/* The bar and the legend are the panel's instrument labels. */
-.trend-panel__bar,
-.trend-legend {
+.trend-panel__bar {
 	font-family: var(--f-mono);
 	font-size: .6875rem;
 	letter-spacing: .1em;
@@ -505,26 +589,8 @@ strong {
 	color: var(--muted);
 }
 
-.trend-panel__live,
-.trend-legend__item {
-	display: inline-flex;
-	align-items: center;
-	gap: .5rem;
-}
-
-.trend-panel__live {
-	color: var(--accent);
-}
-
-.pip {
-	width: 6px;
-	height: 6px;
-	border-radius: 50%;
-	background: currentColor;
-}
-
 .trend-panel__body {
-	padding: 1.125rem 1.25rem 1rem;
+	padding: 1.125rem 1.25rem;
 }
 
 .trend-chart {
@@ -536,91 +602,19 @@ strong {
 	stroke-dasharray: 2 4;
 }
 
-/* The band between the averages is the trend itself; it opens at the cross. */
-.trend-chart__ribbon {
-	fill: var(--accent-soft);
-}
-
-/* Candles are context, so they sit back; the averages carry the read. */
-.candles {
+.market-candles {
 	fill: currentColor;
 	stroke: currentColor;
 }
 
-.candles--up {
+.market-candles--up {
 	color: var(--accent);
-	opacity: var(--candle-up-alpha);
+	opacity: .8;
 }
 
-.candles--down {
+.market-candles--down {
 	color: var(--counter);
 	opacity: .55;
-}
-
-/* Each series names its colour once; the line and its legend key share it. */
-.ema--20,
-.trend-legend__item--20 i {
-	color: var(--accent);
-}
-
-.ema--50,
-.trend-legend__item--50 i {
-	color: var(--ink-2);
-}
-
-.trend-chart__cross,
-.trend-legend__item--cross i {
-	color: var(--ink);
-}
-
-.ema {
-	fill: none;
-	stroke: currentColor;
-	stroke-linejoin: round;
-	stroke-linecap: round;
-}
-
-.ema--20 {
-	stroke-width: 2.25;
-}
-
-.ema--50 {
-	stroke-width: 1.75;
-}
-
-.trend-chart__cross {
-	fill: var(--surface);
-	stroke: currentColor;
-	stroke-width: 1.5;
-}
-
-.trend-legend {
-	display: flex;
-	flex-wrap: wrap;
-	gap: .375rem 1.25rem;
-	margin: .875rem 0 0;
-	padding: 0;
-	list-style: none;
-}
-
-.trend-legend strong {
-	font-variant-numeric: tabular-nums;
-	letter-spacing: .01em;
-}
-
-.trend-legend__item i {
-	width: 16px;
-	height: 2px;
-	border-radius: 2px;
-	background: currentColor;
-}
-
-.trend-legend__item--cross i {
-	width: 8px;
-	height: 8px;
-	border: 1.5px solid;
-	border-radius: 50%;
-	background: none;
 }
 
 .trend-panel__cap {
@@ -1069,66 +1063,10 @@ strong {
 		animation-delay: .18s;
 	}
 
-	/* The chart plays left to right, the way the trend actually formed:
-	   candles first, then the averages catch up, then the cross is marked. */
-	.trend-chart__price {
-		animation: reveal 1.4s cubic-bezier(.3, .7, .3, 1) .45s backwards;
-	}
-
-	.ema {
-		stroke-dasharray: 100;
-		animation: draw 1.5s cubic-bezier(.3, .7, .3, 1) .6s backwards;
-	}
-
-	.trend-chart__cross {
-		transform-box: fill-box;
-		transform-origin: center;
-		animation: pop .38s cubic-bezier(.2, .8, .3, 1) 1.15s backwards;
-	}
-
-	.pip {
-		animation: breathe 3.2s ease-in-out 1.6s infinite;
-	}
-
 	@keyframes rise {
 		from {
 			opacity: 0;
 			transform: translateY(12px);
-		}
-	}
-
-	@keyframes pop {
-		from {
-			opacity: 0;
-			transform: scale(0);
-		}
-	}
-
-	@keyframes reveal {
-		from {
-			clip-path: inset(0 100% 0 0);
-		}
-
-		to {
-			clip-path: inset(0 0 0 0);
-		}
-	}
-
-	@keyframes draw {
-		from {
-			stroke-dashoffset: 100;
-		}
-	}
-
-	@keyframes breathe {
-
-		0%,
-		100% {
-			opacity: 1;
-		}
-
-		50% {
-			opacity: .3;
 		}
 	}
 }
