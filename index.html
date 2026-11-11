@@ -5,21 +5,21 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description"
-		content="blackfish.labs é um laboratório de trading proprietário. Desde 2020 construímos e operamos os nossos próprios sistemas de monitoramento de mercados, grid trading e análise de commodities agrícolas.">
+		content="A blackfish.labs é uma prop trading: desenvolve e opera estratégias algoritmicas com capital próprio e tecnologia para monitorar mercados e automatizar operações.">
 	<meta name="author" content="Jeferson Cruz">
 	<meta name="robots" content="index, follow">
 	<meta name="theme-color" content="#f5f8f8">
 	<link rel="canonical" href="https://blackfishlabs.com.br/">
 	<link rel="icon" href="img/blackfish-favicon.png">
 	<link rel="manifest" href="./manifest.json">
-	<title>blackfish.labs — laboratório de tecnologia para trading</title>
+	<title>blackfish.labs — prop trading com tecnologia própria</title>
 
 	<!-- Open Graph / social sharing. X/Twitter falls back to these, so only twitter:card is needed. -->
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="blackfish.labs">
-	<meta property="og:title" content="blackfish.labs — laboratório de tecnologia para trading">
+	<meta property="og:title" content="blackfish.labs — prop trading com tecnologia própria">
 	<meta property="og:description"
-		content="Desde 2020 construímos e operamos os nossos próprios sistemas: monitoramento de mercados, grid trading e análise de commodities agrícolas.">
+		content="Desenvolvemos e operamos estratégias algoritmicas com capital próprio e tecnologia para monitorar mercados e automatizar operações.">
 	<meta property="og:url" content="https://blackfishlabs.com.br/">
 	<meta property="og:image" content="https://blackfishlabs.com.br/img/blackfish-trade.png">
 	<meta property="og:locale" content="pt_BR">
@@ -71,7 +71,7 @@
 				"@type": "Organization",
 				"@id": "https://blackfishlabs.com.br/#org",
 				"name": "blackfish.labs",
-				"description": "Laboratório de tecnologia para trading. Constrói e opera sistemas próprios de monitoramento de mercados, grid trading e análise de commodities agrícolas.",
+				"description": "Prop trading que desenvolve e opera estratégias algoritmicas com capital próprio e tecnologia para monitorar mercados e automatizar operações.",
 				"url": "https://blackfishlabs.com.br/",
 				"logo": "https://blackfishlabs.com.br/pwalogo-512.png",
 				"image": "https://blackfishlabs.com.br/img/blackfish-trade.png",
@@ -166,52 +166,141 @@
 		<section class="hero">
 			<div class="wrap hero__grid">
 				<div class="hero__copy">
-					<p class="eyebrow">Trading proprietário · desde 2020</p>
-					<h1 class="hero__title">Construímos e operamos <span>nossos próprios sistemas de trading.</span></h1>
+					<p class="eyebrow">Prop trading · desde 2020</p>
+					<h1 class="hero__title">Somos uma prop trading: <span>operamos estratégias algoritmicas com capital próprio.</span></h1>
 					<p class="hero__lead">
-						Tecnologia própria para monitorar mercados, automatizar estratégias e analisar commodities.
+						Desenvolvemos tecnologia para monitorar mercados, automatizar operações e analisar commodities agrícolas.
 					</p>
 
 					<div class="hero__actions">
 						<a class="btn btn--primary" href="#metodo">
-							Como trabalhamos
+							Conheça nosso processo
 							<svg class="icon" aria-hidden="true">
 								<use href="#i-arrow" />
 							</svg>
 						</a>
 					</div>
-					<p class="hero__reassure">Não operamos capital de terceiros.</p>
+					<p class="hero__reassure">Não oferecemos gestão nem recomendação de investimentos.</p>
 				</div>
 
 				<div class="market-scope" aria-label="Mercados em que operamos">
-					<p class="market-scope__label">Mercados</p>
+					<p class="market-scope__label">Mercados em que operamos</p>
 					<ul class="market-scope__list">
 						<li class="market-scope__item">
-							<strong><span class="market-scope__flag" aria-label="Estados Unidos">🇺🇸</span> Estados Unidos</strong>
-							<span>Spot</span>
+							<div class="market-scope__item-head">
+								<span class="market-scope__code" aria-hidden="true">US</span>
+								<strong>Estados Unidos</strong>
+							</div>
+							<div class="market-scope__tags">
+								<span>Spot</span>
+							</div>
 						</li>
 						<li class="market-scope__item">
-							<strong><span class="market-scope__flag" aria-label="Brasil">🇧🇷</span> B3 · Brasil</strong>
-							<span>Spot · Futuros · Opções · Commodities</span>
+							<div class="market-scope__item-head">
+								<span class="market-scope__code" aria-hidden="true">BR</span>
+								<strong>B3 · Brasil</strong>
+							</div>
+							<div class="market-scope__tags">
+								<span>Spot</span>
+								<span>Futuros</span>
+								<span>Opções</span>
+								<span>Commodities</span>
+							</div>
 						</li>
 						<li class="market-scope__item">
-							<strong><span class="market-scope__flag" aria-label="Global">🌐</span> Blockchain</strong>
-							<span>Spot · Perpétuos · Pools de Liquidez</span>
+							<div class="market-scope__item-head">
+								<span class="market-scope__code" aria-hidden="true">ON-CHAIN</span>
+								<strong>Blockchain</strong>
+							</div>
+							<div class="market-scope__tags">
+								<span>Spot</span>
+								<span>Perpétuos</span>
+								<span>Pools de liquidez</span>
+							</div>
 						</li>
 					</ul>
 				</div>
 
 				<figure class="trend-panel" aria-labelledby="trend-cap">
-					<div class="trend-panel__bar">
-						<span>Mercado · ilustração conceitual</span>
-						<span>Sem dados operacionais</span>
-					</div>
-
 					<div class="trend-panel__body">
-						<svg class="trend-chart" viewBox="0 0 360 200" aria-hidden="true">
-							<path class="trend-chart__grid" d="M0 55H360M0 100H360M0 145H360" />
-							<path class="market-candles market-candles--down" d="M20 88V126M44 76V105M68 92V137M92 101V129M116 88V122M140 107V151M164 125V161M188 114V149M212 91V132M236 82V121M260 99V145M284 116V153M308 105V140M332 91V129M12 101h16v13H12zM36 83h16v15H36zM60 102h16v23H60zM84 107h16v14H84zM108 94h16v20h-16zM132 118h16v18h-16zM156 136h16v13h-16zM180 125h16v15h-16zM204 101h16v19h-16zM228 91h16v18h-16zM252 111h16v21h-16zM276 127h16v15h-16zM300 116h16v17h-16zM324 103h16v16h-16z" />
-							<path class="market-candles market-candles--up" d="M28 103V137M52 93V119M76 116V153M100 113V144M124 99V137M148 126V163M172 137V171M196 117V156M220 98V141M244 88V130M268 111V151M292 126V163M316 113V151M340 101V140M20 110h16v18H20zM44 99h16v14H44zM68 124h16v18H68zM92 119h16v17H92zM116 108h16v20h-16zM140 134h16v17h-16zM164 146h16v15h-16zM188 127h16v20h-16zM212 108h16v21h-16zM236 99h16v18h-16zM260 119h16v19h-16zM284 136h16v17h-16zM308 123h16v18h-16zM332 110h16v19h-16z" />
+						<svg class="trend-chart" viewBox="0 0 720 320" aria-hidden="true">
+							<path class="trend-chart__grid"
+								d="M40 52H680M40 92H680M40 132H680M40 172H680M160 36V198M280 36V198M400 36V198M520 36V198M640 36V198" />
+							<path class="trend-chart__divider" d="M40 222H680" />
+							<text class="trend-chart__label" x="40" y="28">PREÇO</text>
+							<text class="trend-chart__label" x="40" y="244">VOLUME</text>
+							<g class="trend-volume">
+								<rect x="56" y="266" width="12" height="26" rx="1" />
+								<rect x="84" y="274" width="12" height="18" rx="1" />
+								<rect x="112" y="257" width="12" height="35" rx="1" />
+								<rect x="140" y="270" width="12" height="22" rx="1" />
+								<rect x="168" y="263" width="12" height="29" rx="1" />
+								<rect x="196" y="254" width="12" height="38" rx="1" />
+								<rect x="224" y="273" width="12" height="19" rx="1" />
+								<rect x="252" y="260" width="12" height="32" rx="1" />
+								<rect x="280" y="276" width="12" height="16" rx="1" />
+								<rect x="308" y="258" width="12" height="34" rx="1" />
+								<rect x="336" y="269" width="12" height="23" rx="1" />
+								<rect x="364" y="255" width="12" height="37" rx="1" />
+								<rect x="392" y="273" width="12" height="19" rx="1" />
+								<rect x="420" y="259" width="12" height="33" rx="1" />
+								<rect x="448" y="252" width="12" height="40" rx="1" />
+								<rect x="476" y="271" width="12" height="21" rx="1" />
+								<rect x="504" y="262" width="12" height="30" rx="1" />
+								<rect x="532" y="275" width="12" height="17" rx="1" />
+								<rect x="560" y="256" width="12" height="36" rx="1" />
+								<rect x="588" y="250" width="12" height="42" rx="1" />
+								<rect x="616" y="268" width="12" height="24" rx="1" />
+								<rect x="644" y="257" width="12" height="35" rx="1" />
+							</g>
+							<g class="trend-candle trend-candle--up">
+								<line x1="62" y1="119" x2="62" y2="163" />
+								<rect x="56" y="126" width="12" height="21" rx="1" />
+								<line x1="118" y1="96" x2="118" y2="149" />
+								<rect x="112" y="102" width="12" height="27" rx="1" />
+								<line x1="174" y1="97" x2="174" y2="136" />
+								<rect x="168" y="105" width="12" height="17" rx="1" />
+								<line x1="202" y1="88" x2="202" y2="130" />
+								<rect x="196" y="98" width="12" height="18" rx="1" />
+								<line x1="286" y1="111" x2="286" y2="151" />
+								<rect x="280" y="119" width="12" height="18" rx="1" />
+								<line x1="314" y1="98" x2="314" y2="139" />
+								<rect x="308" y="107" width="12" height="19" rx="1" />
+								<line x1="398" y1="110" x2="398" y2="152" />
+								<rect x="392" y="127" width="12" height="12" rx="1" />
+								<line x1="426" y1="95" x2="426" y2="136" />
+								<rect x="420" y="102" width="12" height="21" rx="1" />
+								<line x1="454" y1="84" x2="454" y2="123" />
+								<rect x="448" y="93" width="12" height="18" rx="1" />
+								<line x1="538" y1="103" x2="538" y2="143" />
+								<rect x="532" y="112" width="12" height="16" rx="1" />
+								<line x1="566" y1="88" x2="566" y2="128" />
+								<rect x="560" y="98" width="12" height="18" rx="1" />
+								<line x1="594" y1="78" x2="594" y2="119" />
+								<rect x="588" y="88" width="12" height="18" rx="1" />
+								<line x1="650" y1="75" x2="650" y2="117" />
+								<rect x="644" y="85" width="12" height="17" rx="1" />
+							</g>
+							<g class="trend-candle trend-candle--down">
+								<line x1="90" y1="110" x2="90" y2="158" />
+								<rect x="84" y="120" width="12" height="21" rx="1" />
+								<line x1="146" y1="108" x2="146" y2="155" />
+								<rect x="140" y="117" width="12" height="13" rx="1" />
+								<line x1="230" y1="90" x2="230" y2="138" />
+								<rect x="224" y="102" width="12" height="18" rx="1" />
+								<line x1="258" y1="105" x2="258" y2="151" />
+								<rect x="252" y="111" width="12" height="22" rx="1" />
+								<line x1="342" y1="101" x2="342" y2="147" />
+								<rect x="336" y="111" width="12" height="16" rx="1" />
+								<line x1="370" y1="117" x2="370" y2="161" />
+								<rect x="364" y="122" width="12" height="22" rx="1" />
+								<line x1="482" y1="90" x2="482" y2="132" />
+								<rect x="476" y="100" width="12" height="18" rx="1" />
+								<line x1="510" y1="107" x2="510" y2="149" />
+								<rect x="504" y="114" width="12" height="22" rx="1" />
+								<line x1="622" y1="84" x2="622" y2="127" />
+								<rect x="616" y="96" width="12" height="13" rx="1" />
+							</g>
 						</svg>
 					</div>
 
@@ -315,7 +404,7 @@
 							loading="lazy">
 						<span><b>blackfish</b>.labs</span>
 					</a>
-					<p class="site-footer__tag">Tecnologia inteligente para trading. Desde 2020.</p>
+					<p class="site-footer__tag">Prop trading com tecnologia.<br/>Desde 2020.</p>
 					<div class="site-footer__links">
 						<a href="mailto:dev.blackfishlabs@gmail.com">dev.blackfishlabs@gmail.com</a>
 						<a href="https://github.com/BLACKFISHLABS" target="_blank" rel="noopener noreferrer">
@@ -346,7 +435,7 @@
 
 			<div class="site-footer__bottom">
 				<span>&copy; 2020–2026 blackfish.labs</span>
-				<span class="site-footer__sign">buy bitcoin</span>
+				<span class="site-footer__sign">BUY BITCOIN</span>
 			</div>
 		</div>
 	</footer>

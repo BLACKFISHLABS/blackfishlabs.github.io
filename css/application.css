@@ -1,14 +1,11 @@
 /* blackfish.labs
    ==================================================================
-   Deep water, read as an instrument. The palette is a petrol accent on
-   cool paper, inverted to a lit teal on an abyss ground; a single rust
-   counterpoint marks what goes against you — the down candles and the
-   pain list — never a heading or a button. Type has two jobs and no more — Bai
-   Jamjuree states and explains, IBM Plex Mono counts.
+   The interface borrows from a quiet trading terminal: graphite greens,
+   phosphor signals, and a coral counterpoint for down candles. Bai
+   Jamjuree carries the message; IBM Plex Mono marks system details.
 
-   The signature is the trend read: the hero renders price above a
-   rising EMA20 that crossed above the EMA50, the process is ruled into
-   levels, and every divider is a level line.
+   The hero's candle-and-volume chart is illustrative. The process is ruled
+   into levels, and every divider is a level line.
    ================================================================== */
 
 /* Tokens ----------------------------------------------------------- */
@@ -16,25 +13,25 @@
 :root {
 	color-scheme: light;
 
-	--paper: #f5f8f8;
+	--paper: #f4f7f4;
 	--surface: #ffffff;
-	--surface-2: #eef3f4;
-	--ink: #0b1317;
-	--ink-2: #2b3b43;
-	--muted: #5a6d76;
-	--line: #dfe8ea;
-	--line-strong: #c7d5d9;
+	--surface-2: #edf2ee;
+	--ink: #121a16;
+	--ink-2: #33443a;
+	--muted: #596c60;
+	--line: #dbe5dc;
+	--line-strong: #bdcbbf;
 
-	--accent: #0f6d7a;
-	--accent-hi: #0b545e;
-	--accent-soft: rgba(15, 109, 122, .07);
+	--accent: #167653;
+	--accent-hi: #105f42;
+	--accent-soft: rgba(22, 118, 83, .08);
 	--on-accent: #ffffff;
-	--counter: #b8503c;
+	--counter: #b85b40;
 
-	--shadow-s: 0 1px 2px rgba(11, 19, 23, .04);
-	--shadow-m: 0 1px 2px rgba(11, 19, 23, .04), 0 12px 28px -16px rgba(11, 19, 23, .18);
-	--shadow-l: 0 1px 2px rgba(11, 19, 23, .05), 0 24px 48px -24px rgba(11, 19, 23, .24);
-	--shadow-cta: 0 1px 2px rgba(11, 19, 23, .12), 0 10px 22px -12px rgba(15, 109, 122, .55);
+	--shadow-s: 0 1px 2px rgba(18, 26, 22, .04);
+	--shadow-m: 0 1px 2px rgba(18, 26, 22, .04), 0 12px 28px -16px rgba(18, 26, 22, .18);
+	--shadow-l: 0 1px 2px rgba(18, 26, 22, .05), 0 24px 48px -24px rgba(18, 26, 22, .24);
+	--shadow-cta: 0 1px 2px rgba(18, 26, 22, .12), 0 10px 22px -12px rgba(22, 118, 83, .5);
 
 	--f-body: 'Bai Jamjuree', system-ui, -apple-system, sans-serif;
 	--f-display: var(--f-body);
@@ -69,25 +66,25 @@
 [data-theme="dark"] {
 	color-scheme: dark;
 
-	--paper: #070c0f;
-	--surface: #0e161b;
-	--surface-2: #121d23;
-	--ink: #e9eff1;
-	--ink-2: #c3d0d5;
-	--muted: #8496a0;
-	--line: #1c272e;
-	--line-strong: #2b3a43;
+	--paper: #09110d;
+	--surface: #101b15;
+	--surface-2: #15231b;
+	--ink: #e9f4ed;
+	--ink-2: #c3d2c8;
+	--muted: #92a69a;
+	--line: #25362c;
+	--line-strong: #3a5142;
 
-	--accent: #4ac3d6;
-	--accent-hi: #7ad6e4;
-	--accent-soft: rgba(74, 195, 214, .10);
-	--on-accent: #06171b;
-	--counter: #e08a6f;
+	--accent: #57d69a;
+	--accent-hi: #81e9b5;
+	--accent-soft: rgba(87, 214, 154, .10);
+	--on-accent: #06180f;
+	--counter: #ff987a;
 
 	--shadow-s: 0 1px 2px rgba(0, 0, 0, .4);
 	--shadow-m: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 28px -16px rgba(0, 0, 0, .8);
 	--shadow-l: 0 1px 2px rgba(0, 0, 0, .5), 0 24px 48px -24px rgba(0, 0, 0, .9);
-	--shadow-cta: 0 1px 2px rgba(0, 0, 0, .5), 0 10px 22px -12px rgba(74, 195, 214, .35);
+	--shadow-cta: 0 1px 2px rgba(0, 0, 0, .5), 0 10px 22px -12px rgba(87, 214, 154, .32);
 }
 
 /* Base ------------------------------------------------------------- */
@@ -327,7 +324,11 @@ strong {
 .topnav {
 	display: none;
 	gap: var(--s5);
-	font-size: var(--t-sm);
+	margin-left: auto;
+	font-family: var(--f-mono);
+	font-size: var(--t-mono);
+	letter-spacing: .08em;
+	text-transform: uppercase;
 }
 
 .topnav a {
@@ -416,24 +417,24 @@ strong {
 /* Hero ------------------------------------------------------------- */
 
 .hero {
-	--paper: #071832;
-	--surface: #0c2242;
-	--surface-2: #102b50;
-	--ink: #f3f8ff;
-	--ink-2: #c3d3e8;
-	--muted: #a7bbd5;
-	--line: rgba(165, 194, 228, .18);
-	--accent: #39a7ff;
-	--accent-hi: #70c4ff;
-	--accent-soft: rgba(57, 167, 255, .13);
-	--on-accent: #06172e;
-	--counter: #ff947e;
+	--paper: #081710;
+	--surface: #10241a;
+	--surface-2: #152a20;
+	--ink: #effaf2;
+	--ink-2: #cfe3d3;
+	--muted: #aac3b0;
+	--line: rgba(178, 218, 186, .18);
+	--accent: #6be6a2;
+	--accent-hi: #a1f2c0;
+	--accent-soft: rgba(107, 230, 162, .14);
+	--on-accent: #07170e;
+	--counter: #ff9a7a;
 	position: relative;
 	overflow: hidden;
 	padding-block: clamp(3rem, 7vw, 5.5rem) clamp(3rem, 6vw, 4.5rem);
 	background:
-		radial-gradient(ellipse at 50% 0%, rgba(19, 75, 139, .42), transparent 60%),
-		repeating-linear-gradient(124deg, transparent 0 52px, rgba(89, 143, 206, .055) 53px, transparent 54px 84px),
+		radial-gradient(ellipse at 50% 0%, rgba(35, 118, 70, .36), transparent 60%),
+		repeating-linear-gradient(124deg, transparent 0 52px, rgba(148, 220, 165, .055) 53px, transparent 54px 84px),
 		var(--paper);
 	color: var(--ink);
 }
@@ -503,7 +504,7 @@ strong {
 }
 
 .market-scope__label {
-	margin-bottom: .35rem;
+	margin-bottom: var(--s3);
 	font-family: var(--f-mono);
 	font-size: var(--t-mono);
 	font-weight: 500;
@@ -515,6 +516,7 @@ strong {
 
 .market-scope__list {
 	display: grid;
+	gap: var(--s3);
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -523,36 +525,64 @@ strong {
 .market-scope__item {
 	display: flex;
 	flex-direction: column;
-	gap: .25rem;
-	padding: .85rem 1rem;
-	border-top: 1px solid var(--line);
-	text-align: center;
+	gap: var(--s4);
+	padding: 1rem;
+	border: 1px solid var(--line);
+	border-radius: var(--r-md);
+	background: color-mix(in srgb, var(--surface) 76%, transparent);
+	text-align: left;
+}
+
+.market-scope__item-head {
+	display: flex;
+	align-items: center;
+	gap: .625rem;
+	min-width: 0;
+}
+
+.market-scope__code {
+	display: grid;
+	place-items: center;
+	flex: none;
+	min-width: 2.25rem;
+	height: 2rem;
+	padding-inline: .35rem;
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	background: var(--accent-soft);
+	color: var(--accent);
+	font-family: var(--f-mono);
+	font-size: .625rem;
+	font-weight: 500;
+	letter-spacing: .04em;
 }
 
 .market-scope__item strong {
+	min-width: 0;
 	font-size: var(--t-sm);
 	font-weight: 500;
 	color: var(--ink);
 }
 
-.market-scope__item strong .market-scope__flag {
-	display: inline;
-	margin-right: .25rem;
-	font-size: 1rem;
+.market-scope__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .375rem;
 }
 
-.market-scope__item span {
-	font-size: .8125rem;
+.market-scope__tags span {
+	padding: .22rem .45rem;
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	font-size: .75rem;
+	line-height: 1.35;
+	text-transform: uppercase;
 	color: var(--muted);
 }
 
 @media (min-width: 620px) {
 	.market-scope__list {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
-	.market-scope__item + .market-scope__item {
-		border-left: 1px solid var(--line);
 	}
 }
 
@@ -571,24 +601,6 @@ strong {
 	overflow: hidden;
 }
 
-.trend-panel__bar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: var(--s4);
-	padding: .8125rem 1.125rem;
-	border-bottom: 1px solid var(--line);
-	background: var(--surface-2);
-}
-
-.trend-panel__bar {
-	font-family: var(--f-mono);
-	font-size: .6875rem;
-	letter-spacing: .1em;
-	text-transform: uppercase;
-	color: var(--muted);
-}
-
 .trend-panel__body {
 	padding: 1.125rem 1.25rem;
 }
@@ -598,23 +610,42 @@ strong {
 }
 
 .trend-chart__grid {
+	fill: none;
 	stroke: var(--line);
-	stroke-dasharray: 2 4;
+	stroke-dasharray: 2 6;
+	stroke-width: 1;
 }
 
-.market-candles {
+.trend-chart__divider {
+	stroke: var(--line);
+	stroke-width: 1;
+}
+
+.trend-chart__label {
+	fill: var(--muted);
+	font-family: var(--f-mono);
+	font-size: 10px;
+	letter-spacing: 1.6px;
+}
+
+.trend-candle {
 	fill: currentColor;
 	stroke: currentColor;
+	stroke-width: 1.5;
+	stroke-linecap: round;
 }
 
-.market-candles--up {
+.trend-candle--up {
 	color: var(--accent);
-	opacity: .8;
 }
 
-.market-candles--down {
+.trend-candle--down {
 	color: var(--counter);
-	opacity: .55;
+}
+
+.trend-volume {
+	fill: var(--accent);
+	opacity: .28;
 }
 
 .trend-panel__cap {
@@ -881,9 +912,9 @@ strong {
 	}
 }
 
-@media (min-width: 1020px) {
+@media (min-width: 1100px) {
 	.edges {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 }
 
